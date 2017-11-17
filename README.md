@@ -1,11 +1,11 @@
 # OpenContent - Stanza Del Cittadino (```ocsdc```)
 
-### Applicazione per la gestione delle istanze on-line dei cittadini
+## Applicazione per la gestione delle istanze on-line dei cittadini
 
 La Stanza del Cittadino (```ocsdc```) è un'applicazione web basata sul framework [Symfony](https://github.com/symfony/symfony) versione 3.1
 che facilita l'erogazione di servizi online
 
-### Requisiti
+## Requisiti
 
 * [Composer](https://getcomposer.org/)
 * PHP versione 7 o superiore
@@ -15,7 +15,7 @@ che facilita l'erogazione di servizi online
 * wkhtmltopdf
 * npm, gulp, bower
 
-### Installazione
+## Installazione
 
 ```
 git clone https://github.com/OpencontentCoop/stanzadelcittadino stanzadelcittadino
@@ -23,24 +23,24 @@ cd stanzadelcittadino
 composer install
 ```
 
-### Test
+## Test
 Per i test funzionali eseguire il seguente comando:
 ```
 php phpunit -d memory_limit=2G --bootstrap stanzadelcittadino/var/bootstrap.php.cache --configuration stanzadelcittadino/phpunit.xml.dist stanzadelcittadino/tests --teamcity
 ```
 
-### Ricevere aiuto
+## Ricevere aiuto
 * Per segnalare malfunzionamenti utilizzare la funzionalità GitHub Issues di questo repository
 * Per richiedere l'assistenza di uno sviluppatore scrivere a info@opencontent.it
 
-### Licenza
+## Licenza
 Il codice sorgente di questo software è rilasciato con licenza GNU General Public License v2.0; l'applicazione è pertanto Open Source.
 La scelta di questa licenza è dovuta a da due ragioni: 
 * il modello di business di [Opencontent](https://www.opencontent.it/Chi-siamo) ed il suo codice etico aziendale, che identifica nella condivisione del sapere un fattore determinante per migliorare costantemente la qualità e la competitività aziendale
 * la tutela degli utenti ed in particolare degli enti pubblici, che possono più facilmente rispettare quanto previsto dall'Art. 68 comma 1-ter e dal Piano Triennale per l'informativa nella Pubblica Amministrazione.
 
 
-## Codice dell'Amministrazione Digitale - Art. 68.  Analisi comparativa delle soluzioni 
+#### Codice dell'Amministrazione Digitale - Art. 68.  Analisi comparativa delle soluzioni 
 
 In vigore dal 14 settembre 2016 
 
@@ -66,5 +66,5 @@ b)  livello di utilizzo di formati di dati e di interfacce di tipo aperto nonch�
 
 c)  garanzie del fornitore in materia di livelli di sicurezza, conformità alla normativa in materia di protezione dei dati personali, livelli di servizio tenuto conto della tipologia di software acquisito. 
 
-### 1-ter.  Ove dalla valutazione comparativa di tipo tecnico ed economico, secondo i criteri di cui al comma 1-bis, risulti motivatamente l'impossibilità di accedere a soluzioni già disponibili all'interno della pubblica amministrazione, o a software liberi o a codici sorgente aperto, adeguati alle esigenze da soddisfare, è consentita l'acquisizione di programmi informatici di tipo proprietario mediante ricorso a licenza d'uso. 
+#### 1-ter.  Ove dalla valutazione comparativa di tipo tecnico ed economico, secondo i criteri di cui al comma 1-bis, risulti motivatamente l'impossibilità di accedere a soluzioni già disponibili all'interno della pubblica amministrazione, o a software liberi o a codici sorgente aperto, adeguati alle esigenze da soddisfare, è consentita l'acquisizione di programmi informatici di tipo proprietario mediante ricorso a licenza d'uso. 
 
