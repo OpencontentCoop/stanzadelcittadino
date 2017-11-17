@@ -33,9 +33,15 @@ php phpunit -d memory_limit=2G --bootstrap stanzadelcittadino/var/bootstrap.php.
 * Per segnalare malfunzionamenti utilizzare la funzionalità GitHub Issues di questo repository
 * Per richiedere l'assistenza di uno sviluppatore scrivere a info@opencontent.it
 
+## Copyright
+
+Copyright (C) 2010-2017 Opencontent SCARL. Tutti i diritti riservati.
+
 ## Licenza
-Il codice sorgente di questo software è rilasciato con licenza GNU General Public License v2.0; l'applicazione è pertanto Open Source.
-La scelta di questa licenza è dovuta a da due ragioni: 
+http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2.0
+
+## Codice etico
+La Stanza del Cittadino è un'applicazione Open Source. Il codice sorgente viene rilasciato con licenza GNU General Public License v2.0 per due ragioni: 
 * il modello di business di [Opencontent](https://www.opencontent.it/Chi-siamo) ed il suo codice etico aziendale, che identifica nella condivisione del sapere un fattore determinante per migliorare costantemente la qualità e la competitività aziendale
 * la tutela degli utenti ed in particolare degli enti pubblici, che possono più facilmente rispettare quanto previsto dall'Art. 68 comma 1-ter e dal Piano Triennale per l'informatica nella Pubblica Amministrazione.
 
