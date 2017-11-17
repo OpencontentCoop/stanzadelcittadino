@@ -1,9 +1,9 @@
 # OpenContent - Stanza Del Cittadino (```ocsdc```)
 
-### Applicazione per l'esposizione dei servizi online per la Pubblica Amministrazione
+### Applicazione per la gestione delle istanze on-line dei cittadini
 
 La Stanza del Cittadino (```ocsdc```) è un'applicazione web basata sul framework [Symfony](https://github.com/symfony/symfony) versione 3.1
-che permette l'erogazione di servizi online
+che facilita l'erogazione di servizi online
 
 ### Requisiti
 
@@ -34,5 +34,5 @@ php phpunit -d memory_limit=2G --bootstrap stanzadelcittadino/var/bootstrap.php.
 * Per richiedere l'assistenza di uno sviluppatore scrivere a info@opencontent.it
 
 ### Licenza
-Il software è rilasciato con licenza GNU GPL come da file presente in repository
+Il software è rilasciato con licenza GNU General Public License v2.0 come da file presente in repository
 
