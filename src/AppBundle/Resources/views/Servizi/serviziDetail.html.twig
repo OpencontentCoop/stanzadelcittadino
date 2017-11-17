@@ -1,0 +1,82 @@
+{% extends '@App/Default/index.html.twig' %}
+{% block main_content %}
+
+    <h1>{{ servizio.name }}</h1>
+
+    <div class="row">
+        <div class="col-sm-7">
+
+            <h3>{{ servizio.description }}</h3>
+
+            <div class="service-istruzioni">
+                {{ servizio.testoIstruzioni|raw }}
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    {#todo: usare constant()#}
+                    {% if servizio.status == 0 %}
+                        <div class="alert alert-danger" role="alert"><i class="fa fa-times" aria-hidden="true"></i> {{ 'servizio.cancellato'|trans }}</div>
+                    {% elseif servizio.status == 2 %}
+                        <div class="alert alert-warning" role="alert"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ 'servizio.sospeso'|trans }}</div>
+                    {% else %}
+                        <div class="text-center">
+                            <a href="{{ path('pratiche_new', {'servizio': servizio.slug}) }}" class="btn btn-success btn-lg service-access-button">
+                                <span class="hidden-xs">{{ 'servizio.accedi_al_servizio'|trans({'%name%': servizio.name}) }}</span>
+                                <span class="visible-xs hidden-sm hidden-md hidden-g"><i class="fa fa-pencil" aria-hidden="true"></i> {{ 'servizio.accedi_al_servizio'|trans({'%name%':null}) }}</span>
+                            </a>
+
+                            {% if servizio.enti|length > 0 %}
+                                <div class="well well-sm text-left"><strong>{{ 'servizio.enti_coinvolti'|trans }}:</strong>
+                                    <ul class="list-unstyled">
+                                        {% for ente in servizio.enti %}
+                                            <li><a href="{{ ente.siteUrl }}"><small>{{ ente.name }}</small></a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+
+        {% if servizi_area|length > 0 %}
+        <div class="col-sm-4 col-sm-offset-1 sidebar">
+            <h4>{{ "servizio.servizi_area_title"|trans({'%area%': servizio.area.name}) }}</h4>
+            <div class="list-group">
+                {% for s in servizi_area %}
+                    <a href="{{ path('servizi_show', {'slug': s.slug}) }}" class="list-group-item{% if s.id == servizio.id %} active{% endif %}">{{ s.name }}</a>
+                {% endfor %}
+            </div>
+
+            {#<h3>Condividi</h3>
+            <p class="nav_social clearfix">
+                <a href="#" title="Seguici su Twitter">
+                <span class="fa-stack fa-lg">
+                  <span class="fa fa-circle fa-stack-2x"></span>
+                  <span class="fa fa-twitter fa-stack-1x fa-inverse"></span>
+                </span><span class="sr-only">Twitter</span>
+                </a>
+                <a href="#" title="Seguici su Facebook">
+                <span class="fa-stack fa-lg">
+                  <span class="fa fa-circle fa-stack-2x"></span>
+                  <span class="fa fa-facebook fa-stack-1x fa-inverse"></span>
+                </span><span class="sr-only">Facebook</span>
+                </a>
+                <a href="#" title="Seguici su Youtube">
+                <span class="fa-stack fa-lg">
+                  <span class="fa fa-circle fa-stack-2x"></span>
+                  <span class="fa fa-youtube-play fa-stack-1x fa-inverse"></span>
+                </span><span class="sr-only">Youtube</span>
+                </a>
+            </p>#}
+        </div>
+        {% endif %}
+    </div>
+
+
+{% endblock %}

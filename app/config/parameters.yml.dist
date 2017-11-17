@@ -1,0 +1,48 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    database_driver:   pdo_pgsql
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     symfony
+    database_user:     root
+    database_password: ~
+    # You should uncomment this if you want use pdo_sqlite
+    # database_path: "%kernel.root_dir%/data.db3"
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+    default_from_email_address: sdc@opencontent.it
+
+    # A secret key that's used to generate certain security-related tokens
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    # knp_snappy
+    wkhtmlbinary:     '%kernel.root_dir%/../vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64'
+
+    # La password usata da gpa per pushare gli status changes
+    gpa_password: gpa
+
+    # La password usata da comunweb per pushare le schede informative
+    ez_password: ez
+
+    pitre_adapter_url: http://localhost:8080/
+
+    messages_backend_url: http://localhost:3000/
+
+    header_top_title: ''
+    header_top_link: ''
+    footer_credits: ''
+
+    ocsdc_iter_duration_start_status: 3
+    ocsdc_iter_duration_end_statuses: [10,100]
+
+    ocsdc_default_date_format: "d-m-Y"
+    ocsdc_default_datetime_format: "d-m-Y H:i"
+    ocsdc_default_time_format: "H:i"
+
+    ocsdc_scheme: 'https'
+    ocsdc_host:  devsdc.opencontent.it

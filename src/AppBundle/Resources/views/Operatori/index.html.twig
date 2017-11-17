@@ -1,0 +1,170 @@
+{% extends '@App/Default/index.html.twig' %}
+
+{% block main_content %}
+
+    <ul class="nav nav-pills">
+        <li {% if pratiche_mie|length > 0 or ( pratiche_libere|length == 0 and pratiche_concluse|length == 0 ) %}class="active"{% endif %}>
+            <a href="#da_gestire" aria-controls="mie" role="tab" data-toggle="tab">
+                {{ 'operatori.pratiche_mie'|trans }} <span class="badge">{{ pratiche_mie|length }}</span>
+            </a>
+        </li>
+        <li {% if pratiche_mie|length == 0 and pratiche_libere|length > 0 %}class="active"{% endif %}>
+            <a href="#da_assegnare" aria-controls="mie" role="tab" data-toggle="tab">
+                {{ 'operatori.pratiche_libere'|trans }} <span class="badge">{{ pratiche_libere|length }}</span>
+            </a>
+        </li>
+        <li {% if pratiche_mie|length == 0 and pratiche_libere|length == 0 and pratiche_concluse|length > 0 %}class="active"{% endif %}>
+            <a href="#concluse" aria-controls="concluse" role="tab" data-toggle="tab">
+                {{ 'operatori.pratiche_concluse'|trans }} <span class="badge">{{ pratiche_concluse|length }}</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+
+        <div role="tabpanel" class="tab-pane {% if pratiche_mie|length > 0 or ( pratiche_libere|length == 0 and pratiche_concluse|length == 0 ) %}active{% endif %} list mie" id="da_gestire">
+            <h3>{{ 'operatori.pratiche_mie'|trans }}</h3>
+            {% if pratiche_mie|length > 0 %}
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <td>{{ 'pratica.protocollo'|trans }}</td>
+                        <td>{{ 'pratica.richiedente'|trans }}</td>
+                        <td>{{ 'pratica.servizio'|trans }}</td>
+                        <td>{{ 'pratica.categoria'|trans }}</td>
+                        <td>{{ 'pratica.data_di_compilazione'|trans }}</td>
+                        <td>{{ 'pratica.stato'|trans }}</td>
+                        <td></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for pratica in pratiche_mie %}
+                        <tr class="pratica"
+                            data-pratica="{{ pratica.id }}"
+                            data-user="{{ pratica.user.id }}"
+                            data-status="{{ pratica.status }}">
+
+                            <td>{{ pratica.numeroProtocollo }}</td>
+                            <td>{{ pratica.user.fullName }}</td>
+                            <td>{{ pratica.servizio.name }}</td>
+                            <td>{{ pratica.servizio.area.name }}</td>
+                            <td>{{ pratica.creationTime|date(ocsdc_default_datetime_format) }}</td>
+                            <td>{{ pratica.statusName|trans }}</td>
+                            <td>
+                                <a href="{{ path('operatori_show_pratica', {'pratica': pratica}) }}"
+                                   class="btn btn-primary btn-xs">{{ 'operatori.vai_al_dettaglio'|trans }}</a>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+
+
+        <div role="tabpanel" class="tab-pane {% if pratiche_mie|length == 0 and pratiche_libere|length > 0 %}active{% endif %} list libere" id="da_assegnare">
+            <h3>{{ 'operatori.pratiche_libere'|trans }}</h3>
+            {% if pratiche_libere|length > 0 %}
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <td>{{ 'pratica.protocollo'|trans }}</td>
+                        <td>{{ 'pratica.richiedente'|trans }}</td>
+                        <td>{{ 'pratica.categoria'|trans }}</td>
+                        <td>{{ 'pratica.data_di_compilazione'|trans }}</td>
+                        <td>{{ 'pratica.stato'|trans }}</td>
+                        <td></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for pratica in pratiche_libere %}
+                        <tr class="pratica"
+                            data-pratica="{{ pratica.id }}"
+                            data-user="{{ pratica.user.id }}"
+                            data-status="{{ pratica.status }}">
+
+                            <td>{% if pratica.numeroProtocollo %}{{ pratica.numeroProtocollo }}{% else %}<em>{{ 'pratica.in_attesa_protocollo'|trans }}</em>{% endif %}</td>
+                            <td>{{ pratica.user.fullName }}</td>
+                            <td>{{ pratica.servizio.name }}</td>
+                            <td>{{ pratica.creationTime|date(ocsdc_default_datetime_format) }}</td>
+                            <td>{{ pratica.statusName|trans }}</td>
+                            <td>
+                                    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
+                                            {% if not(pratica.numeroProtocollo) %}
+                                                disabled="disabled"
+                                                title="{{ 'pratica.in_attesa_protocollo'|trans }}"
+                                            {% endif %}
+                                            data-target="#confirmAutoAssign{{ pratica.id }}">
+                                        {{ 'operatori.prendi_in_carico_pratica'|trans }}
+                                    </button>
+
+                                    <div class="modal fade" id="confirmAutoAssign{{ pratica.id }}" tabindex="-1"
+                                         role="dialog"
+                                         aria-labelledby="confirmAutoAssignLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    {{ 'operatori.sicuro_di_prendere_in_carico_la_pratica'|trans({'%name%': pratica.servizio.name}) }}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a type="button" class="btn btn-default"
+                                                       data-dismiss="modal">{{ 'operatori.no'|trans }}</a>
+                                                    <a href="{{ path('operatori_autoassing_pratica', {'pratica': pratica}) }}"
+                                                       class="btn btn-primary">{{ 'operatori.si'|trans }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            {% endif %}
+        </div>
+
+        <div role="tabpanel" class="tab-pane {% if pratiche_mie|length == 0 and pratiche_libere|length == 0 and pratiche_concluse|length > 0 %}active{% endif %} list concluse" id="concluse">
+            <h3>{{ 'operatori.pratiche_concluse'|trans }}</h3>
+            {% if pratiche_concluse|length > 0 %}
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <td>{{ 'pratica.protocollo'|trans }}</td>
+                        <td>{{ 'pratica.richiedente'|trans }}</td>
+                        <td>{{ 'pratica.categoria'|trans }}</td>
+                        <td>{{ 'pratica.data_di_compilazione'|trans }}</td>
+                        <td>{{ 'pratica.stato'|trans }}</td>
+                        <td></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for pratica in pratiche_concluse %}
+                        <tr class="pratica"
+                            data-pratica="{{ pratica.id }}"
+                            data-user="{{ pratica.user.id }}"
+                            data-status="{{ pratica.status }}">
+
+                            <td>{{ pratica.numeroProtocollo }}</td>
+                            <td>{{ pratica.user.fullName }}</td>
+                            <td>{{ pratica.servizio.name }}</td>
+                            <td>{{ pratica.creationTime|date(ocsdc_default_datetime_format) }}</td>
+                            <td>{{ pratica.statusName|trans }}</td>
+                            <td>
+                                <a href="{{ path('operatori_show_pratica', {'pratica': pratica}) }}"
+                                   class="btn btn-primary btn-xs">{{ 'operatori.vai_al_dettaglio'|trans }}</a>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+
+    </div>
+
+
+{% endblock %}

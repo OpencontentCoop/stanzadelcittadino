@@ -1,0 +1,24 @@
+{% set download_allegato_path = user.id == pratica.user.id ? 'allegati_download_cpsuser' : 'allegati_download_operatore' %}
+
+{% if pratica.moduliCompilati|length > 0 %}
+    <ul class="list-unstyled">
+        {% for allegato in pratica.moduliCompilati %}
+            <li class="modulo">
+                <a href="{{ path(download_allegato_path, {'allegato': allegato.id}) }}">
+                    {% if pratica.status >= constant('STATUS_REGISTERED', pratica) %}
+                        {{ 'operatori.scarica_modulo_compilato'|trans }}
+                    {% else %}
+                        {{ 'operatori.scarica_ricevuta_provvisoria'|trans }}
+                    {% endif %}
+                    <br /><small>{{ allegato.description }}</small>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if pratica.statusName == 'STATUS_SUBMITTED' %}
+    <div class="alert alert-info">
+        <p>{{ 'operatori.scarica_ricevuta_provvisoria_info'|trans|raw }}</p>
+    </div>
+{% endif %}

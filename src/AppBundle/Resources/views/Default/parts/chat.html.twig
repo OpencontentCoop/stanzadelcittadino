@@ -1,0 +1,48 @@
+<div id="chat" class="panel panel-primary no-border-radius" data-user="{{ user.id }}">
+    <div class="panel-heading">
+        <h3 class="panel-title">{% if is_granted('ROLE_OPERATORE') %}{{ 'chat.title.operatore'|trans }}{% else %}{{ 'chat.title.user'|trans }}{% endif %}<span class="pull-right"><i class="fa fa-comments-o" aria-hidden="true"></i></span></h3>
+    </div>
+    <div class="panel-body">
+
+        <div class="row bootstrap snippets">
+            <div class="col-md-12" id="thread-tabs">
+                <ul class="nav nav-tabs">
+                    {% for thread in threads %}
+                        <li{% if loop.index0 == 0 %} class="active"{% endif %}><a data-toggle="tab" href="#thread{{ loop.index0 }}"><small>{{ thread.title }}</small></a></li>
+                    {% endfor %}
+                </ul>
+                <div class="tab-content">
+                    {% for thread in threads %}
+                        <div id="thread{{ loop.index0 }}" data-thread="{{ thread.threadId }}" class="tab-pane fade{% if loop.index0 == 0 %} in active{% endif %}">
+                            <div class="box box-primary direct-chat direct-chat-primary">
+                                <div class="box-body">
+                                    <div class="direct-chat-messages"></div>
+                                </div>
+                            </div>
+                            <hr>
+                            {% form_theme thread.form 'bootstrap_3_layout.html.twig' %}
+                            {{ form(thread.form) }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% verbatim %}
+    <script id="message-tmpl" type="text/x-jsrender">
+        <div class="direct-chat-msg {{if isMine}}right{{/if}}">
+            <div class="direct-chat-info clearfix">
+                <span class="sr-only">{{:messageId}}</span>
+                <span class="sr-only direct-chat-name {{if isMine}}pull-left{{else}}pull-right{{/if}}">{{if isMine}}Io{{else}}Utente{{/if}}</span>
+                <span class="direct-chat-timestamp {{if isMine}}pull-left{{else}}pull-right{{/if}}">{{:formattedDate}}</span>
+            </div>
+            <img class="direct-chat-img" src="http://bootdey.com/img/Content/user_1.jpg" alt="Message User Image">
+            <div class="direct-chat-text">
+                {{:content}}
+            </div>
+        </div>
+    </script>
+{% endverbatim %}
+

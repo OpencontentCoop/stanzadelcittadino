@@ -1,0 +1,39 @@
+{% extends '@App/Default/index.html.twig' %}
+
+{% block main_content %}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="alert alert-info">
+                {{ 'intro'|trans|raw }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-9">
+            <h1>{{ 'esplora_i_servizi'|trans() }}</h1>
+        </div>
+        <div class="col-md-3 hidden-xs text-right">
+            <p class="welcome">
+                <a href="{{ path('servizi_miller') }}" class="btn btn-sm btn-info">
+                    <i class="fa fa-columns" aria-hidden="true"></i> {{ 'visualizza_colonne'|trans }}
+                </a>
+            </p>
+        </div>
+    </div>
+    {% for servizio in servizi %}
+
+        {% if loop.index % 3 == 1 %}
+            <div class="row list">
+        {% endif %}
+
+            <div class="col-sm-4">
+                {{ include('@App/Servizi/parts/panel/servizio.html.twig') }}
+            </div>
+
+        {% if (loop.index % 3 == 0 or loop.last) %}
+        </div>
+        {% endif %}
+
+    {% endfor %}
+
+{% endblock %}

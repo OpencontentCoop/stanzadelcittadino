@@ -1,0 +1,48 @@
+<div id="pratica-summary">
+
+    {{ include('AppBundle:Pratiche/summary/parts:base.html.twig', {'pratica':pratica, 'user': user}) }}
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'contributo_pannolini.dettaglio.acquisto'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">
+            <dl class="dl-horizontal">
+                <dt>{{ 'contributo_pannolini.dettaglio.tipo_pannolini'|trans }}</dt>
+                <dd>{{ ('contributo_pannolini.dettaglio.tipo_pannolino.'~pratica.tipoPannolini)|trans() }}</dd>
+                <dt>{{ 'contributo_pannolini.dettaglio.nome_punto_vendita'|trans }}</dt>
+                <dd>{{ pratica.nomePuntoVendita }}</dd>
+                <dt>{{ 'contributo_pannolini.dettaglio.data_acquisto'|trans }}</dt>
+                <dd>{{ pratica.dataAcquisto|date(ocsdc_default_date_format) }}</dd>
+                <dt>{{ 'contributo_pannolini.dettaglio.totale_spesa'|trans }}</dt>
+                <dd>{{ pratica.totaleSpesa }}</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'iscrizione_asilo_nido.dettaglio.bambino'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">
+            {{ pratica.bambinoCognome }} {{ pratica.bambinoNome }} {{ 'iscrizione_asilo_nido.dettaglio.nato_a'|trans }} {{ pratica.bambinoLuogoNascita }}
+            {{ 'iscrizione_asilo_nido.dettaglio.nato_il'|trans }} {{ pratica.bambinoDataNascita|date(ocsdc_default_date_format) }}
+        </div>
+    </div>
+
+    {{ include('AppBundle:Pratiche/summary/parts:allegati.html.twig', {'pratica':pratica, 'user': user}) }}
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'contributo_pannolini.dettaglio.conto_corrente'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">
+            <dl class="dl-horizontal">
+                <dt>{{ 'contributo_pannolini.dettaglio.iban'|trans }}</dt>
+                <dd>{{ pratica.iban }}</dd>
+                <dt>{{ 'contributo_pannolini.dettaglio.intestatario_conto'|trans }}</dt>
+                <dd>{{ pratica.intestatarioConto }}</dd>
+            </dl>
+        </div>
+    </div>
+
+    {#<div class="row">#}
+        {#<div class="col-xs-4 col-sm-3"><strong>{{ 'autolettura_acqua.dettaglio.note'|trans }}</strong></div>#}
+        {#<div class="col-xs-8 col-sm-9">{{ pratica.note }}</div>#}
+    {#</div>#}
+
+</div>

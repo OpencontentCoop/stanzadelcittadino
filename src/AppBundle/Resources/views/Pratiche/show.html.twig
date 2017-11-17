@@ -1,0 +1,41 @@
+{% extends '@App/Default/index.html.twig' %}
+
+{% block main_content %}
+    <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>{{ pratica.servizio.name }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                {{ include('AppBundle:Pratiche/parts:pratica_summary.html.twig', {'pratica':pratica}) }}
+            </div>
+
+
+            <div class="col-md-4 col-md-offset-1 sidebar">
+
+                {{ include('AppBundle:Pratiche/parts:pratica_iter.html.twig', {'pratica':pratica}) }}
+
+                {% if pratica.statusName == 'STATUS_DRAFT' and user.id == pratica.user.id %}
+                <h3>Azioni</h3>
+                <div class="list-group">
+                    {% if pratica.statusName == 'STATUS_DRAFT' and user.id == pratica.user.id %}
+                        <a class="list-group-item" data-action="edit_draft" href="{{ path('pratiche_compila', {'pratica': pratica.id, 'instance': pratica.instanceId, 'step': pratica.lastCompiledStep}) }}">
+                            <i class="fa fa-arrow-circle-o-right"></i>
+                            {{ 'pratica.vai_alla_pratica'|trans }}
+                        </a>
+                    {% endif %}
+                </div>
+                {% endif %}
+                {{ include('@App/Default/parts/chat.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/app/js/jsrender.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/chat.js') }}"></script>
+{% endblock %}

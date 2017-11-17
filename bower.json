@@ -1,0 +1,33 @@
+{
+  "name": "ita-bootstrap",
+  "description": "Implementazione di riferimento per le Linee guida di design.italia.it",
+  "authors": [
+    "AgID"
+  ],
+  "license": "CC0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#~3.3.5"
+  },
+  "overrides": {
+    "bootstrap-sass": {
+      "main": [
+	  	"src/AppBundle/Resources/assets/stylesheets/_bootstrap.scss",
+	    "src/AppBundle/Resources/assets/javascripts/bootstrap.min.js",
+	    "src/AppBundle/Resources/assets/stylesheets/bootstrap/**/*"
+      ]
+    },
+    "jquery": {
+      "main": [
+		  "src/AppBundle/Resources/dist/jquery.min.js"
+      ]
+    }
+  }
+}

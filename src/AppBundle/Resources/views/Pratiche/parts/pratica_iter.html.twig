@@ -1,0 +1,24 @@
+{% set duration = pratica|iter_duration(app.request.locale) %}
+<h3>{{ 'pratica.iter'|trans }} {% if duration != '' %}<i class="fa fa-clock-o has_tooltip" data-toggle="tooltip" data-placement="top" title="{{ 'pratica.tooltip_durata_iter'|trans }} {{ pratica|iter_duration }}"></i>{% endif %}</h3>
+<div class="panel no-border-radius">
+    <div class="panel-body">
+        <ul class="progress-indicator stepped stacked nocenter">
+            {% for timestamp, changes in pratica.storicoStati %}
+                <li class="completed info{% for change in changes[0] %}{% if change and (change == 10 or change == 100) %} last{% endif %}{% endfor %}">
+                    <a href="#">
+                        <span class="bubble"></span>
+                        <span class="stacked-text">
+                        <span class="fa fa-calendar"></span>
+                        {{ timestamp|date(ocsdc_default_datetime_format) }}
+                        {% for change in changes[0] %}
+                            {% if change is not null %}
+                                {% set message = 'pratica.dettaglio.stato_'~change %}
+                                <span class="subdued"><em> {{ message| trans }} </em></span>
+                            {% endif %}
+                        {% endfor %}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

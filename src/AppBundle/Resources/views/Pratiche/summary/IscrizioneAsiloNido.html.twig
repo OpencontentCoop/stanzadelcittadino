@@ -1,0 +1,32 @@
+<div id="pratica-summary">
+
+    {{ include('AppBundle:Pratiche/summary/parts:base.html.twig', {'pratica':pratica, 'user': user}) }}
+
+    {% if pratica.struttura != null %}
+        <div class="row">
+            <div class="col-xs-12 col-sm-3"><strong>{{ 'iscrizione_asilo_nido.dettaglio.struttura'|trans }}</strong></div>
+            <div class="col-xs-12 col-sm-9"> {{ pratica.struttura.name }}</div>
+        </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'iscrizione_asilo_nido.dettaglio.orario'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9"> {{ pratica.strutturaOrario }}</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'iscrizione_asilo_nido.dettaglio.periodo'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9"> {{ pratica.periodoIscrizioneDa|date(ocsdc_default_date_format) }} - {{ pratica.periodoIscrizioneA|date(ocsdc_default_date_format) }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'iscrizione_asilo_nido.dettaglio.bambino'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">
+            {{ pratica.bambinoCognome }} {{ pratica.bambinoNome }} {{ 'iscrizione_asilo_nido.dettaglio.nato_a'|trans }} {{ pratica.bambinoLuogoNascita }}
+            {{ 'iscrizione_asilo_nido.dettaglio.nato_il'|trans }} {{ pratica.bambinoDataNascita|date(ocsdc_default_date_format) }}
+        </div>
+    </div>
+
+    {{ include('AppBundle:Pratiche/summary/parts:nucleo_familiare.html.twig', {'pratica':pratica, 'user': user}) }}
+
+    {{ include('AppBundle:Pratiche/summary/parts:allegati.html.twig', {'pratica':pratica, 'user': user}) }}
+
+</div>

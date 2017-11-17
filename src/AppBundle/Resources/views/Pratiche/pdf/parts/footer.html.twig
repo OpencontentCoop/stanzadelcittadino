@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .page, .topage{
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function subst() {
+            var vars={};
+            var x = document.location.search.substring(1).split('&');
+            for (var i in x) {var z=x[i].split('=',2);vars[z[0]] = unescape(z[1]);}
+            var x = ['frompage','topage','page','webpage','section','subsection','subsubsection'];
+            for (var i in x) {
+                var y = document.getElementsByClassName(x[i]);
+                for (var j=0; j<y.length; ++j) y[j].textContent = vars[x[i]];
+            }
+        }
+    </script>
+</head>
+<body style="padding:0; margin:0; font-family: 'Arial', sans-serif;" onload="subst()">
+<div style="background-color: #F0F0F0 !important;
+            color: #30373d;
+            margin: 0;
+            padding: 15pt 10pt;
+            text-align: center;
+            border-top: 1pt solid #e74e26;">
+    <table cellspacing="0" cellpadding="0">
+        <tr>
+            <td colspan="2" style="text-align: left">
+                <small>
+                    {{ 'pratica.pdf.riferimento_sdc'|trans }} {{ url('pratiche_show', {'pratica': pratica.id}) }}
+                </small>
+            </td>
+        </tr>
+        <tr>
+            <td width="70%" style="text-align: left">
+                <small>{{ footer_credits|raw }}</small>
+            </td>
+            <td width="30%" style="text-align: right"><small>Pagina <span class="page"></span> di <span class="topage"></span></small></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
+

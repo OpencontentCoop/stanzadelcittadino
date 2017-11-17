@@ -1,0 +1,34 @@
+{% extends '@App/Default/index.html.twig' %}
+
+{% block main_content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h2>{{ pratica.servizio.name }} - {{ pratica.richiedenteCognome }} {{ pratica.richiedenteNome }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+            {{ include('AppBundle:Pratiche/parts:pratica_summary.html.twig', {'pratica':pratica, 'user': user}) }}
+
+            {{ include('AppBundle:Operatori/parts:commenti.html.twig', {'pratica':pratica}) }}
+
+        </div>
+        <div class="col-sm-4 col-sm-offset-1 sidebar">
+            {% if pratica.statusName != 'STATUS_COMPLETE' and pratica.statusName != 'STATUS_CANCELLED' and pratica.statusName != 'STATUS_COMPLETE_WAITALLEGATIOPERATORE' and pratica.statusName != 'STATUS_CANCELLED_WAITALLEGATIOPERATORE' %}
+
+                {{ include('AppBundle:Operatori/parts:azioni_operatore.html.twig', {'pratica':pratica}) }}
+            {% endif %}
+
+        </div>
+        <div class="col-md-4 col-md-offset-1 sidebar">
+            {{ include('AppBundle:Pratiche/parts:pratica_iter.html.twig', {'pratica':pratica}) }}
+            {{ include('@App/Default/parts/chat.html.twig') }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/app/js/jsrender.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/chat.js') }}"></script>
+{% endblock %}

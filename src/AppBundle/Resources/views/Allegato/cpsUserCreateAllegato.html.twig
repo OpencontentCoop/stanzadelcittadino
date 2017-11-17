@@ -1,0 +1,38 @@
+{% extends '@App/Default/index.html.twig' %}
+{% block main_content %}
+    {% form_theme form ':form:ocsdc_form_style.html.twig' %}
+
+    <div class="container-fluid">
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{ 'allegato.crea_allegato'|trans }}</h1>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-{% if form.vars.helper.guideText|length > 0 %}7{% else %}12{% endif %}">
+                    <div class="row">
+                        {{ form_start(form) }}
+                        {{ form_errors(form) }}
+                        <div>
+                            {{ form.vars.helper.descriptionText|raw }}
+                        </div>
+                        {{ form_rest(form) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+
+                {% if form.vars.helper.guideText|length > 0 %}
+                    <div class="col-md-4 col-md-offset-1 sidebar">
+                        <h3><i class="fa fa-info" aria-hidden="true"></i> Info</h3>
+                        <div class="alert alert-info" role="alert">
+                            {{ form.vars.helper.guideText|raw }}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

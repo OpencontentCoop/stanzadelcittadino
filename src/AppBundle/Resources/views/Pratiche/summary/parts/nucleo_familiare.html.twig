@@ -1,0 +1,31 @@
+{% if pratica.nucleoFamiliare|length > 0 %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'pratica.dettaglio.nucleo_familiare'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">
+
+            <div id="no-more-tables">
+                <table class="table table-bordered table-striped table-condensed cf">
+                    <thead class="cf">
+                    <tr>
+                        <th>{{ 'pratica.dettaglio.componente_nucleo_familiare.cognome'|trans }}</th>
+                        <th>{{ 'pratica.dettaglio.componente_nucleo_familiare.nome'|trans }}</th>
+                        <th>{{ 'pratica.dettaglio.componente_nucleo_familiare.codice_fiscale'|trans }}</th>
+                        <th>{{ 'pratica.dettaglio.componente_nucleo_familiare.rapporto_di_parentela'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for componente in pratica.nucleoFamiliare %}
+                        <tr>
+                            <td data-title="{{ 'pratica.dettaglio.componente_nucleo_familiare.cognome'|trans }}">{{ componente.cognome }} </td>
+                            <td data-title="{{ 'pratica.dettaglio.componente_nucleo_familiare.nome'|trans }}">{{ componente.nome }}</td>
+                            <td data-title="{{ 'pratica.dettaglio.componente_nucleo_familiare.abbr_codice_fiscale'|trans }}">{{ componente.codiceFiscale }}</td>
+                            <td data-title="{{ 'pratica.dettaglio.componente_nucleo_familiare.abbr_rapporto_di_parentela'|trans }}">{{ componente.rapportoParentela }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+{% endif %}

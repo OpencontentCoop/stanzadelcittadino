@@ -1,0 +1,32 @@
+{% set download_allegato_path = user.id == pratica.user.id ? 'allegati_download_cpsuser' : 'allegati_download_operatore' %}
+<div class="row">
+    <div class="col-xs-12 col-sm-3"><strong>{{ 'pratica.dettaglio.allegati'|trans }}</strong></div>
+    <div class="col-xs-12 col-sm-9">
+        {% if pratica.allegati|length > 0 %}
+            <div id="no-more-tables">
+                <table class="table table-bordered table-striped table-condensed cf">
+                    <thead class="cf">
+                    <tr>
+                        <th>{{ 'pratica.dettaglio.allegato.file'|trans }}</th>
+                        <th>{{ 'pratica.dettaglio.allegato.descrizione'|trans }}</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for allegato in pratica.allegati %}
+                        <tr>
+                            <td data-title="{{ 'pratica.dettaglio.allegato.file'|trans }}">{{ allegato.originalFilename }}</td>
+                            <td data-title="{{ 'pratica.dettaglio.allegato.descrizione'|trans }}">{{ allegato.description }}</td>
+                            <td data-title="">
+                                {{ include('AppBundle:Pratiche/summary/parts:download_allegato.html.twig', {'pratica':pratica, 'user': user, 'allegato': allegato}) }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p><em>{{ 'pratica.nessun_allegato'|trans }}</em></p>
+        {% endif %}
+    </div>
+</div>

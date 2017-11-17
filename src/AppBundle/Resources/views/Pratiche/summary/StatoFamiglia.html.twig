@@ -1,0 +1,7 @@
+<div id="pratica-summary">
+
+{{ include('AppBundle:Pratiche/summary/parts:base.html.twig', {'pratica':pratica, 'user': user}) }}
+
+    {{ include('AppBundle:Pratiche/summary/parts:allegati_operatore.html.twig', {'pratica':pratica, 'user': user}) }}
+
+</div>

@@ -1,0 +1,19 @@
+{% extends 'AppBundle:Emails:base.html.twig' %}
+
+
+{% block email_content %}
+    <table align='center' bgcolor='#fff' border='0' cellpadding='0' cellspacing='0' id='backgroundTable' style='background: #fff;'>
+        <tr>
+            <td style="padding: 20px">
+                <p>
+                    {{ 'email.pratica.dear'|trans({'%user_name%' : user_name})|striptags }}
+                </p>
+                <p>{{ ('email.pratica.user.' ~ pratica.statusName|replace({'_':'.'})|lower)|trans({'%servizio%': pratica.servizio.name, '%protocollo%': pratica.numeroProtocollo})|raw }}</p>
+                <p>
+                    {{ 'email.pratica.thanks'|trans() }}
+                </p>
+                <p>{{ 'email.pratica.link'|trans()}} <a href="{{ absolute_url(path('pratiche_show', {'pratica': pratica}))  }}">{{ 'email.detail_link'|trans }}</a></p>
+            </td>
+        </tr>
+    </table>
+{% endblock %}

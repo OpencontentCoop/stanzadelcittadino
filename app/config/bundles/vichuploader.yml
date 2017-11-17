@@ -1,0 +1,11 @@
+vich_uploader:
+  db_driver: orm
+  mappings:
+    allegato:
+      uri_prefix:         /pratiche/allegati
+      upload_destination: '%kernel.root_dir%/../var/uploads/pratiche/allegati'
+      directory_namer:    ocsdc.allegati.directory_namer
+      namer:              vich_uploader.namer_uniqid
+      inject_on_load:     true
+      delete_on_update:   true
+      delete_on_remove:   true

@@ -1,0 +1,129 @@
+{% extends '@App/Default/index.html.twig' %}
+{% block main_content %}
+
+    <h1>{{ 'user.dashboard.title'|trans }}</h1>
+
+    <div class="row">
+        <div class="{% if threads %}col-md-8{% else %}col-md-12{% endif %}">
+            <div class="row">
+                <div class="col-md-6">
+                    {{ include('AppBundle:User/parts:avvisi_notizie.html.twig') }}
+                </div>
+                <div class="col-md-6">
+                    {{ include('AppBundle:User/parts:scadenze.html.twig') }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-primary no-border-radius">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{ 'user.dashboard.servizi_primo_piano'|trans }}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                {% for servizio in servizi %}
+                                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                                        {%  if servizio.area %}
+                                            <span>{{ servizio.area.name }}</span><br/>
+                                        {% endif %}
+                                        <a href="{{ path('servizi_show', {'slug': servizio.slug}) }}" class="min-h-90">{{ servizio.name }}</a>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <a class="btn btn-default btn-sm" href="{{ path('servizi_show', {'slug': servizio.slug}) }}">
+                                                    <i class="fa fa-arrow-circle-o-right"></i>
+                                                     {{ 'servizio.vai'|trans() }}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-right">
+                                    <a href="{{ path('servizi_list') }}" class="small">{{ 'nav.servizi'|trans() }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>{{ 'user.dashboard.ultime_pratiche'|trans }} {% if pratiche|length > 0 %}<a href="{{ path('pratiche') }}" class="small">{{ 'user.dashboard.vedi_tutte'|trans }}</a>{% endif %}</h3>
+                    {% if pratiche|length > 0 %}
+                        <div id="no-more-tables">
+                            <table class="table table-bordered table-striped table-condensed cf">
+                                <thead class="cf">
+                                <tr>
+                                    <td>{{ 'pratica.servizio'|trans }}</td>
+                                    <td>{{ 'pratica.protocollo'|trans }}</td>
+                                    <td>{{ 'pratica.categoria'|trans }}</td>
+                                    <td>{{ 'pratica.data_di_compilazione'|trans }}</td>
+                                    <td>{{ 'pratica.stato'|trans }}</td>
+                                    <td></td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for pratica in pratiche %}
+                                    <tr class="pratica"
+                                        data-pratica="{{ pratica.id }}"
+                                        data-user="{{ pratica.user.id }}"
+                                        data-status="{{ pratica.status }}">
+
+                                        <td data-title="{{ 'pratica.servizio'|trans }}">{{ pratica.servizio.name }}</td>
+                                        <td data-title="{{ 'pratica.protocollo'|trans }}">{% if pratica.numeroProtocollo %} {{ pratica.numeroProtocollo }}{% else %} - {% endif %}</td>
+                                        <td data-title="{{ 'pratica.categoria'|trans }}">{{ pratica.servizio.area.name }}</td>
+                                        <td data-title="{{ 'pratica.data_di_compilazione'|trans }}">{{ pratica.creationTime|date(ocsdc_default_datetime_format) }}</td>
+                                        <td data-title="{{ 'pratica.stato'|trans }}">{{ pratica.statusName|trans }}</td>
+                                        <td data-title="">
+                                            <a href="{{ path('pratiche_show', {'pratica': pratica}) }}"
+                                               class="btn btn-primary btn-xs">{{ 'user.dashboard.vai_al_dettaglio'|trans }}</a>
+                                        </td>
+
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-info" role="alert"><i class="fa fa-info" aria-hidden="true"></i> {{ 'pratica.empty'|trans() }}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% if threads %}
+            <div class="col-md-4">
+                {{ include('@App/Default/parts/chat.html.twig') }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/app/js/jsrender.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            var news = $('#news');
+            var deadlines = $('#deadlines');
+            news.html($.templates("#tpl-news-spinner").render({}));
+            $.get("{{ path('user_latest_news') }}", function (data) {
+                if (data.length > 0) {
+                    news.parent().css({'max-height':'300px','overflow-y':'scroll','overflow-x':'hidden'});
+                    news.html($.templates("#tpl-news").render(data));
+                }else {
+                    news.parent().removeAttr('style');
+                    news.html($.templates("#tpl-news-empty").render({}));
+                }
+            });
+            deadlines.html($.templates("#tpl-deadlines-spinner").render({}));
+            $.get("{{ path('user_latest_deadlines') }}", function (data) {
+                if (data.length > 0)
+                    deadlines.html($.templates("#tpl-deadlines").render(data));
+                else
+                    deadlines.html($.templates("#tpl-deadlines-empty").render({}));
+            });
+        });
+    </script>
+    <script src="{{ asset('bundles/app/js/chat.js') }}"></script>
+{% endblock %}

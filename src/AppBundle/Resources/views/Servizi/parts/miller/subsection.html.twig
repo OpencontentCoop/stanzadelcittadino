@@ -1,0 +1,35 @@
+<div class="pane-inner a-to-z">
+    <h1 tabindex="-1">{{ current_subtopic.name }}</h1>
+    <p class="sort-order"><i class="fa fa-sort-alpha-asc" aria-hidden="true"></i></p>
+
+    {% if servizi[current_subtopic.id] is defined and servizi[current_subtopic.id]|length > 0 %}
+        <ul>
+            {% for servizio in servizi[current_subtopic.id] %}
+                <li>
+                    <a href="{{ path('servizi_show', {'slug': servizio.slug}) }}">{{ servizio.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if sub_sub_topics|length > 0 %}
+        {% for subtopic in sub_sub_topics %}
+            <div class="{{ subtopic.slug }}">
+                <h5>{{ subtopic.name }}</h5>
+                <ul>
+                    {% if servizi[subtopic.id] is defined and servizi[subtopic.id]|length > 0 %}
+                        {% for servizio in servizi[subtopic.id] %}
+                            <li>
+                                <a href="{{ path('servizi_show', {'slug': servizio.slug}) }}">{{ servizio.name }}</a>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li class="text-danger"><small>Non sono presenti servizi per questa categoria</small></li>
+                    {% endif %}
+                </ul>
+            </div>
+        {% endfor %}
+    {% elseif servizi[current_subtopic.id] is not defined or servizi[current_subtopic.id]|length == 0  %}
+        <p class="text-danger"><small>Non sono presenti servizi per questa categoria</small></p>
+    {% endif %}
+</div>

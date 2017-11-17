@@ -1,0 +1,63 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Stanza del cittadino{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/ita-bootstrap.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/jasny-bootstrap.min.css') }}"/>
+{% endblock %}
+
+{% block nav %}
+    {{ include('@App/Default/nav/main.html.twig') }}
+{% endblock %}
+
+{% block header %}
+    {{ include('@App/Default/header/header.html.twig') }}
+{% endblock %}
+
+{% block content_container %}
+    {{ include('@App/Default/parts/breadcrumb.html.twig') }}
+    {{ include('@App/Default/parts/flashes.html.twig') }}
+
+    <section id="main-content">
+        <div class="container-fluid">
+            {% block main_content %}{% endblock %}
+        </div>
+    </section>
+
+    {{ include('@App/Default/parts/survey.html.twig') }}
+{% endblock %}
+
+{% block footer %}
+    {{ include('@App/Default/footer/prefooter.html.twig') }}
+    {{ include('@App/Default/footer/footer.html.twig') }}
+    {{ include('@App/Default/footer/subfooter.html.twig') }}
+{% endblock %}
+
+{% block javascripts %}
+    <!-- !Javascript - at the bottom for fast page loading -->
+    <script src="{{ asset('bundles/app/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/app/js/jasny-bootstrap.min.js') }}"></script>
+    <script>
+        $(document).ready(function($) {
+
+            var $wrap = $(window),
+                    $header = $("#header"),
+                    headerHeight = $header.outerHeight(),
+                    headerTopHeight = $("#header-top").outerHeight(),
+                    headerInsideHeight = $("#header-inside").outerHeight();
+
+            $wrap.on('scroll', function(e) {
+                if ($wrap.scrollTop() > headerTopHeight + headerInsideHeight
+                        && $wrap.width() > 200
+                ) {
+                    $header.addClass("header-fixed");
+                } else {
+                    $header.removeClass("header-fixed");
+                }
+            });
+            $('.has_tooltip').tooltip();
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,5 @@
+
+fos_user:
+    db_driver: orm
+    firewall_name: operatori
+    user_class: AppBundle\Entity\OperatoreUser

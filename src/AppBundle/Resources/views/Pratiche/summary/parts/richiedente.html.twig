@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-3"><strong>{{ 'pratica.dettaglio.richiedente'|trans }}</strong></div>
+    <div class="col-xs-12 col-sm-9">
+        {{ pratica.richiedenteCognome }} {{ pratica.richiedenteNome }}
+        <ul class="list-unstyled">
+            <li><strong>{{ 'pratica.dettaglio.richiedente.nato_a'|trans }}</strong> {{ pratica.richiedenteLuogoNascita }}</li>
+            <li><strong>{{ 'pratica.dettaglio.richiedente.nato_il'|trans }}</strong> {{ pratica.richiedenteDataNascita|date(ocsdc_default_date_format) }}</li>
+            <li><strong>{{ 'pratica.dettaglio.richiedente.residente_a'|trans }}</strong> {{ pratica.richiedenteCapResidenza }} {{ pratica.richiedenteCittaResidenza }} {{ pratica.richiedenteIndirizzoResidenza }}</li>
+            <li><strong>{{ 'pratica.dettaglio.richiedente.telefono'|trans }}</strong> {{ pratica.richiedenteTelefono }}</li>
+            <li><strong>{{ 'pratica.dettaglio.richiedente.email'|trans }}</strong> {{ pratica.richiedenteEmail }}</li>
+        </ul>
+    </div>
+</div>

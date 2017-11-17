@@ -1,0 +1,229 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    ocsdc.cps.userprovider:
+        class: AppBundle\Services\CPSUserProvider
+        arguments: ["@doctrine.orm.default_entity_manager", "@logger"]
+
+    ocsdc.cps.token_authenticator:
+        class: AppBundle\Security\CPSAuthenticator
+
+    ocsdc.cps.terms_acceptance_listener:
+        class: AppBundle\EventListener\TermsAcceptListener
+        arguments: ["@router", "@security.token_storage", "@ocsdc.cps.terms_acceptance_checker"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, priority: -10 }
+
+    ocsdc.cps.complete_profile_listener:
+        class: AppBundle\EventListener\CompleteProfileListener
+        arguments: ["@router","@security.token_storage", "@ocsdc.cps.userprovider"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, priority: -100 }
+
+    gedmo.listener.sluggable:
+        class: Gedmo\Sluggable\SluggableListener
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        calls:
+            - [ setAnnotationReader, [ "@annotation_reader" ] ]
+
+    monolog_processor:
+        class: Monolog\Processor\PsrLogMessageProcessor
+        tags:
+            - { name: monolog.processor }
+
+    ocsdc.form.flow.type_extension.help_data:
+        class: AppBundle\Form\Extension\HelpDataTypeExtension
+        arguments: ["@translator"]
+        tags:
+            - { name: form.type_extension, alias: "form", extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
+
+    ocsdc.allegati.directory_namer:
+        class: AppBundle\Services\DirectoryNamerService
+
+    ocsdc.allegati.mimetype_validator:
+        class: AppBundle\Validator\Constraints\ValidMimeTypeValidator
+        arguments: ["@translator"]
+        tags:
+            - { name: validator.constraint_validator }
+
+    ocsdc.mailer:
+        class: AppBundle\Services\MailerService
+        arguments: ["@mailer", "@translator", "@templating"]
+
+
+    ocsdc.modulo_pdf_builder:
+        class: AppBundle\Services\ModuloPdfBuilderService
+        arguments:
+            - "@filesystem"
+            - "@doctrine.orm.default_entity_manager"
+            - "@translator"
+            - "@vich_uploader.property_mapping_factory"
+            - "@ocsdc.allegati.directory_namer"
+            - "@knp_snappy.pdf"
+            - "@templating"
+            - "%ocsdc_default_datetime_format%"
+
+    ocsdc.protocollo.client: "@guzzle.client.protocollo_cct"
+
+    ocsdc.protocollo.handlers.pitre:
+        class: AppBundle\Protocollo\PiTreProtocolloHandler
+        arguments: ["@ocsdc.protocollo.client"]
+        public: false
+
+    ocsdc.protocollo.handlers.dummy:
+        class: AppBundle\Protocollo\DummyProtocolloHandler
+        public: false
+
+    ocsdc.protocollo.handler: "@ocsdc.protocollo.handlers.pitre"
+
+    ocsdc.protocollo_delayed:
+        class: AppBundle\Services\DelayedProtocolloService
+        arguments: ["@ocsdc.protocollo_direct","@doctrine.orm.entity_manager","@logger"]
+
+    ocsdc.protocollo_direct:
+        class: AppBundle\Services\ProtocolloService
+        arguments: ["@ocsdc.protocollo.handler","@doctrine.orm.entity_manager","@logger","@event_dispatcher"]
+
+    ocsdc.protocollo: "@ocsdc.protocollo_delayed"
+
+    ocsdc.pratica_listeners.sendmail:
+        class: AppBundle\EventListener\SendMailPraticaListener
+        arguments: ["@ocsdc.mailer", "%default_from_email_address%", "@logger"]
+        tags:
+            - { name: kernel.event_listener, event: ocsdc.pratica.on_status_change, method: onStatusChange, priority: 10 }
+
+    ocsdc.pratica_listeners.protocollo:
+        class: AppBundle\EventListener\ProtocollaPraticaListener
+        arguments: ["@ocsdc.protocollo","@logger"]
+        tags:
+            - { name: kernel.event_listener, event: ocsdc.pratica.on_status_change, method: onStatusChange, priority: 100 }
+
+    ocsdc.form.flow.storage_key_generator:
+        class: AppBundle\Form\UserSessionStorageKeyGenerator
+
+    ocsdc.form.type.choose_allegato:
+        class: AppBundle\Form\Base\ChooseAllegatoType
+        arguments: ["@doctrine.orm.entity_manager", "@validator"]
+        tags:
+            - { name: form.type }
+
+    ocsdc.form.type.signed_allegato:
+        class: AppBundle\Form\Operatore\Base\SignedAllegatoType
+        arguments: ["@doctrine.orm.entity_manager", "@validator", "@ocsdc.p7m_signature_check"]
+        tags:
+          - { name: form.type }
+
+    ocsdc.form.flow.pratica:
+        class: AppBundle\Form\Base\PraticaFlow
+        parent: craue.form.flow
+        arguments: ["@logger","@translator"]
+
+    ocsdc.form.flow.asilonido:
+        class: AppBundle\Form\IscrizioneAsiloNido\IscrizioneAsiloNidoFlow
+        parent: ocsdc.form.flow.pratica
+
+    ocsdc.form.flow.autoletturaacqua:
+        class: AppBundle\Form\AutoletturaAcqua\AutoletturaAcquaFlow
+        parent: ocsdc.form.flow.pratica
+
+    ocsdc.form.flow.contributopannolini:
+        class: AppBundle\Form\ContributoPannolini\ContributoPannoliniFlow
+        parent: ocsdc.form.flow.pratica
+
+    ocsdc.form.flow.cambioresidenza:
+        class: AppBundle\Form\CambioResidenza\CambioResidenzaFlow
+        parent: ocsdc.form.flow.pratica
+
+    ocsdc.form.flow.allacciamentoacquedotto:
+        class: AppBundle\Form\AllacciamentoAcquedotto\AllacciamentoAcquedottoFlow
+        parent: ocsdc.form.flow.pratica
+        arguments: ["@logger","@translator"]
+
+    ocsdc.form.flow.certificatonascita:
+        class: AppBundle\Form\CertificatoNascita\CertificatoNascitaFlow
+        parent: ocsdc.form.flow.pratica
+
+    ocsdc.form.flow.attestazioneanagrafica:
+        class: AppBundle\Form\AttestazioneAnagrafica\AttestazioneAnagraficaFlow
+        parent: ocsdc.form.flow.pratica
+
+    ocsdc.form.flow.listeelettorali:
+        class: AppBundle\Form\ListeElettorali\ListeElettoraliFlow
+        parent: ocsdc.form.flow.pratica
+
+    ocsdc.form.flow.statofamiglia:
+        class: AppBundle\Form\StatoFamiglia\StatoFamigliaFlow
+        parent: ocsdc.form.flow.pratica
+
+    ocsdc.form.flow.praticaoperatore:
+        class: AppBundle\Form\Operatore\Base\PraticaOperatoreFlow
+        parent: craue.form.flow
+        arguments: ["@logger","@translator"]
+
+    ocsdc.form.flow.standardoperatore:
+            class: AppBundle\Form\Operatore\Standard\StandardOperatoreFlow
+            parent: ocsdc.form.flow.praticaoperatore
+
+    ocsdc.form.flow.certificatonascitaoperatore:
+        class: AppBundle\Form\Operatore\CertificatoNascita\CertificatoNascitaOperatoreFlow
+        parent: ocsdc.form.flow.praticaoperatore
+
+    ocsdc.form.flow.attestazioneanagraficaoperatore:
+        class: AppBundle\Form\Operatore\AttestazioneAnagrafica\AttestazioneAnagraficaOperatoreFlow
+        parent: ocsdc.form.flow.praticaoperatore
+
+    ocsdc.form.flow.listeelettoralioperatore:
+        class: AppBundle\Form\Operatore\ListeElettorali\ListeElettoraliOperatoreFlow
+        parent: ocsdc.form.flow.praticaoperatore
+
+    ocsdc.form.flow.statofamigliaoperatore:
+        class: AppBundle\Form\Operatore\StatoFamiglia\StatoFamigliaOperatoreFlow
+        parent: ocsdc.form.flow.praticaoperatore
+
+    ocsdc.comunweb_content_provider:
+        class: AppBundle\Services\ComunwebContentProviderService
+        arguments: ["@guzzle.client.comunweb","@logger"]
+
+    ocsdc.remote_content_provider: "@ocsdc.comunweb_content_provider"
+
+    ocsdc.messages.client: "@guzzle.client.messages"
+    ocsdc.messages_adapter:
+        class: AppBundle\Services\MessagesAdapterService
+        arguments: ["@ocsdc.messages.client", "@logger", "@doctrine"]
+
+    ocsdc.twig.iter_calculator_extension:
+        class: AppBundle\Twig\IterCalculatorExtension
+        arguments: ['%ocsdc_iter_duration_start_status%', '%ocsdc_iter_duration_end_statuses%']
+        public: false
+        tags:
+            - { name: twig.extension }
+
+    ocsdc.pratica_status_service:
+        class: AppBundle\Services\PraticaStatusService
+        arguments: ["@doctrine.orm.entity_manager", "@logger", "@event_dispatcher"]
+
+    ocsdc.protocollo_success_events_subscriber:
+        class: AppBundle\EventListener\ProtocolloSuccessSubscriber
+        arguments: ["@ocsdc.pratica_status_service", "@logger"]
+        tags:
+            - { name: kernel.event_subscriber }
+
+    ocsdc.cps.terms_acceptance_checker:
+        class: AppBundle\Services\TermsAcceptanceCheckerService
+        arguments: ["@doctrine"]
+
+    ocsdc.form.flow.occupazionesuolopubblico:
+        class: AppBundle\Form\OccupazioneSuoloPubblico\OccupazioneSuoloPubblicoFlow
+        parent: ocsdc.form.flow.pratica
+
+    ocsdc.form.flow.contributoassociazioni:
+            class: AppBundle\Form\ContributoAssociazioni\ContributoAssociazioniFlow
+            parent: ocsdc.form.flow.pratica
+
+    ocsdc.p7m_signature_check:
+            class: AppBundle\Services\P7MSignatureCheckService
+

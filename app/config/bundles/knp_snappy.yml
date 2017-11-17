@@ -1,0 +1,4 @@
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     "%wkhtmlbinary%"

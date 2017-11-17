@@ -1,0 +1,731 @@
+title: 'Stanza del cittadino'
+claim: 'Portale ufficiale dei servizi online degli Enti Locali Trentini'
+intro: '<p>Attraverso "La Stanza del Cittadino" potrai accedere con pochi click a tutti i servizi messi a disposizione degli Enti Locali Trentini.</p><p>Per alcuni di essi dovrai autenticarti seguendo le istruzioni.</p>'
+salva: 'Salva'
+elimina: 'Elimina'
+terms_do_il_consenso: 'Dò il consenso'
+accedi_al_servizio: 'Accedi al servizio %name%'
+registrati_per_accedere_al_servizio: 'Registrati per accedere al servizio'
+servizi_pending: 'Servizi con pratiche inviate'
+esplora_i_servizi: 'Esplora i servizi'
+lista_pratiche: 'Le mie pratiche'
+bozze_servizio: 'Pratiche in bozza per il servizio'
+msg_bozze_servizio: 'Attenzione, ci sono delle pratiche in compilazione per il servizio selezionato.'
+lista_pratiche_bozza: 'Pratica in bozza'
+pratica_ricevuta: 'La tua pratica è stata registata nel sistema'
+welcome: 'F: Benvenuta,|M: Benvenuto,'
+completa_profilo: "Completa e conferma i dati del tuo profilo"
+error_message: "Ooops! Qualcosa non ha funzionato!"
+error_message_detail: "Per favore contatta il supporto tecnico e comunicagli cosa stavi facendo."
+visualizza_colonne: "Visualizza colonne"
+visualizza_griglia: "Visualizza griglia"
+profilo_utente: "Profilo utente"
+operatore: "Operatore"
+credits: "La Stanza del Cittadino è una iniziativa progettuale sperimentale del Comune di Tre Ville"
+
+nav:
+  home: 'Homepage'
+  dashboard: 'La mia stanza'
+  servizi: 'Tutti i servizi'
+  pratiche: 'Le mie pratiche'
+  profilo: 'Il mio profilo'
+  allegati: 'I miei allegati'
+  informativa_privacy: 'Informativa per il trattamento dati personali'
+  operatori:
+    panello_controllo: "Pannello di controllo"
+    lista_operatori: 'Gestisci operatori comune'
+    accesso_operatori: 'Accesso operatori'
+
+terms:
+  title: 'Accettazione termini di utilizzo'
+
+servizio:
+  enti_coinvolti: 'Servizio disponibile per'
+  cancellato: 'Il servizio è stato cancellato'
+  sospeso: 'Il servizio è stato sospeso'
+  accedi_al_servizio: 'Accedi al servizio %name%'
+  attivo_per: "Servizio attivo per:"
+  servizi_area_title: '%area%'
+  vai: "Vai al servizio"
+  il_servizio: 'Il servizio'
+  area_tematica: 'Area tematica'
+
+pratica:
+  guida_utente: 'Guida alla compilazione'
+  email:
+    status_change:
+      subject: 'La pratica è stata aggiornata'
+  iter: 'Iter della pratica'
+  tooltip_durata_iter: "Durata iter: circa"
+  vai_alla_pratica: 'Vai alla pratica'
+  nuova_pratica: 'Nuova pratica: %name%'
+  passo_uno_di_tanti: 'Passo %current% di %total%'
+  riprendi_pratica: "Riprendi compilazione"
+  empty: 'Non sono presenti pratiche a tuo nome.'
+  protocollo: 'Protocollo'
+  in_attesa_protocollo: 'In attesa di protocollazione'
+  richiedente: 'Richiedente'
+  servizio: 'Servizio'
+  categoria: 'Categoria'
+  data_di_compilazione: 'Data di compilazione'
+  data_di_creazione: 'Data di creazione'
+  stato: 'Stato'
+  nessun_allegato: 'Non sono presenti allegati.'
+  aggiungi_allegato: 'Aggiungi allegato'
+  aggiungi_componente_nucleo_familiare: 'Aggiungi componente nucleo familiare'
+  cancella_elemento: 'Cancella elemento'
+  nucleoFamiliare: 'Composizione del nucleo familiare'    
+  pdf:
+    dati_autenticazione: 'Dati autenticazione'
+    spett_le: 'Spett.le'
+    oggetto: 'Oggetto:'
+    il_sottoscritto: 'Il/La sottoscritto/a'
+    nato_il: 'nato/a il'
+    nato_a: 'a'
+    nazionalita: 'Nazionalita'
+    codice_ficale: 'Codice fiscale'
+    residente_in: 'Residente in'
+    telefono: 'Recapito telefonico'
+    email: 'Recapito email'
+    chiede: 'chiede'
+    comunica: 'comunica'
+    dichiara: 'dichiara'
+    allega: 'allega'
+    dichiarazione_composizione_nucleo_familiare: 'che il proprio nucleo familiare &egrave; cos&igrave; composto:'
+    composizione_nucleo_familiare:
+      nome_e_cognome: 'Nome e cognome'
+      rapporto_parentela: 'Rapporto di parentela'
+      codice_fiscale: 'Codice fiscale'
+    dichiarazione_allegati: 'di allegare i seguenti documenti:'
+    dichiarazione_cambiamenti: 'di informare tempestivamente il %comune% di mutamenti significativi nelle situazioni familiari ed economiche della famiglia'
+    dichiarazione_cambiamenti_detail: "Il dichiarante &egrave; consapevole che in caso di dichiarazione mendace sar&agrave; punito ai sensi del Codice Penale secondo quanto prescritto dall'art. 76 del D.P.R. 445/2000 e che, inoltre, qualora dal controllo effettuato emerga la non veridicit&agrave; del contenuto di taluna delle dichiarazioni rese, decadr&agrave; dai benefici conseguenti al provvedimento eventualmente emanato sulla base della dichiarazione non veritiera (art. 75 D.P.R. 445/2000).Il dichiarante &egrave; informato ed autorizza la raccolta dei dati per l'emanazione del provvedimento amministrativo ai sensi dell'art. 13 del D. Lgs. 196/2003."
+    luogo: 'L&igrave;'
+    riferimento_sdc: 'Riferimento in Stanza del cittadino:'
+  dettaglio:
+    data_ora_presentazione: 'Data e ora di presentazione'
+    alle: 'alle'
+    stato: 'Stato corrente'
+    servizio: 'Servizio'
+    ente: 'Ente'
+    richiedente: 'Richiedente'
+    richiedente.nato_a: 'Luogo di nascita'
+    richiedente.nato_il: 'Data di nascita'
+    richiedente.residente_a: 'Richiedente'
+    richiedente.telefono: 'Telefono'
+    richiedente.email: 'Email'
+    nucleo_familiare: 'Nucleo familiare'
+    componente_nucleo_familiare:
+      cognome: 'Cognome'
+      nome: 'Nome'
+      codice_fiscale: 'Codice fiscale'
+      abbr_codice_fiscale: 'CF'
+      rapporto_di_parentela: 'Rapporto di parentela'
+      abbr_rapporto_di_parentela: 'Parentela'
+    allegati: 'File allegati'
+    allegato:
+      file: 'Nome del file'
+      descrizione: 'Descrizione'
+      pratiche_list_intro: 'Allegato alle pratiche:'
+    modulocompilato: ''
+    stato_1: 'Bozza'
+    stato_2: 'Inviata'
+    stato_3: 'Protocollata'
+    stato_4: 'Presa in carico'
+    stato_5: 'Elaborata (in attesa di protocollazione del documento di esito)'
+    stato_10: 'Iter completato'
+    stato_100: 'Cancellata'
+    stato_90: 'Rifiutata (in attesa di protocollazione del documento di esito)'
+  modulo:
+    descrizione: 'Modulo nomeservizio compilato il datacompilazione'  
+    descrizioneRisposta: 'Servizio nomeservizio, risposta compilata il datacompilazione'
+
+
+iscrizione_asilo_nido:
+  dettaglio:
+    struttura: 'Struttura'
+    orario: 'Orario'
+    periodo: 'Periodo'
+    bambino: 'Bambino'
+    nato_a: 'nato a'
+    nato_il: 'il'
+  pdf:
+    ammissione_nido: "l'ammissione all'asilo nido"
+    del_bambino: 'del bambino/a'
+    orario: 'Orario prescelto'
+    periodo: 'Periodo di iscrizione'
+    periodo_da: 'dal'
+    periodo_a: 'al'
+    
+
+contributo_pannolini:    
+  pdf:
+    rimborso: "Il rimborso per la spesa sostenuta nell'acquisto dei pannolini di tipo "
+    per_il_bambino: 'per il bambino'
+    che_venga_rimborsato: 'Il rimborso andrà effettuato sul seguente conto bancario: '
+    intestato_a: 'intestato a'
+  dettaglio:
+    acquisto: 'Dettaglio acquisto'
+    nome_punto_vendita: 'Punto Vendita'
+    data_acquisto: 'Data Acquisto'
+    totale_spesa: 'Totale spesa (€)'
+    conto_corrente: 'Conto Corrente'
+    iban: 'IBAN'
+    intestatario_conto: 'Intestato A'
+    tipo_pannolini: 'Tipo Pannolini'
+    tipo_pannolino:
+      1: 'Lavabile'
+      2: 'BioPannolino'
+
+autolettura_acqua:    
+  dettaglio:
+    intestatario: "Dati dell'intestatario del contratto"
+    intestatario_codice_utente: "Codice utente"
+    intestatario_nome_completo: "Nome e cognome"
+    intestatario_indirizzo_completo: "Indirizzo"
+    intestatario_telefono: "Telefono"
+    intestatario_email: "Email"
+    contatore: "Dati del contatore"
+    contatore_numero: "Numero"
+    contatore_uso: "Tipo di utilizzo"
+    contatore_unita_immobiliari: "Unità immobiliari"
+    lettura: "Dati della lettura"
+    lettura_metri_cubi: "Metri cubi"
+    lettura_data: "Data"
+    note: "Comunicazioni"
+  pdf:
+    lettura_contatore: "L'autolettura del contatore numero"
+    di_uso: "di uso"
+    per_unita_immobiliari: "per numero di unità immobiliari"
+    intestato_a: "Intestato a"
+    lettura_metri_cubi: "Metri cubi"
+    lettura_in_data: "In data"
+    comunica_inoltre: "Comunica inoltre"
+  
+cambio_residenza:  
+  aggiungi_persona_residente: "Aggiungi persona"
+  pdf:
+    comune: ' - comune '
+    stato: ' - stato '
+    rischi: "Consapevole delle responsabilità penali per le dichiarazioni mendaci ai sensi degli art. 75 e 76 DPR 445/2000 che prevedono la decadenza dai benefici e l’obbligo di denuncia all’autorità competente."
+    trasferimento: "Di aver trasferito la dimora abituale al seguente indirizzo"
+    familiari: "Che nell’abitazione sita al nuovo indirizzo si sono trasferiti anche i familiari di seguito specificati"
+    iscritti: "Che nell’abitazione sita al nuovo indirizzo sono già iscritte le seguenti persone"
+    accertamento_dati: "Di aver rilasciato le seguenti informazioni per l'accertamento dei dati"
+    occupazione:
+        proprietario: "Di essere proprietario dell'abitazione:"
+        locazione: "Di essere intestatario del contratto di locazione regolarmente registrato presso l'Agenzia delle Entrate"
+        locazione_erp: "Di essere intestatario di contratto di locazione relativo a immobile di Edilizia Residenziale Pubblica"
+        comodato: "Di essere comodatario con contratto di comodato d'uso gratuito regolarmente registato presso l'Agenzia delle Entrate"
+        usufruttuario: "Di essere usufruttuario"
+        autocertificazione: "Di occupare legittimamente l'abitazione in base all' autocertificazione del proprietario dell'appartamento"
+
+allacciamento_acquedotto:        
+  pdf:
+    chiede: "L’autorizzazione ad effettuare l’allacciamento all’acquedotto comunale, secondo le modalità fissate nel regolamento vigente"
+
+attestazione_anagrafica:
+  pdf:
+    richiesta: "Il rilascio di attestazione di iscrizione Anagrafica"
+
+certificato_nascita:
+  pdf:
+    richiesta: "Il rilascio del certificato di nascita"
+
+stato_famiglia:
+  pdf:
+    richiesta: "Il rilascio del certificato dello stato di famiglia"
+
+occupazione_suolo_pubblico:
+  pdf:
+    richiesta: "Il rilascio della concessione di occupazione di suolo pubblico:"
+
+contributo_associazioni:
+  pdf:
+    richiesta: "L'erogazione del contributo per la segunte associazione ed attività:"
+
+liste_elettorali:
+  pdf:
+    richiesta: "Di essere inserito nell'Albo delle persone idonee all'ufficio di presidenza e all'ufficio di scrutatore presso i seggi elettorali"
+
+errori:
+  allegato:
+    tipo_non_valido: "L'allegato %s è di un tipo non supportato"
+
+STATUS_CANCELLED: 'Rifiutata'
+STATUS_DRAFT: 'Bozza'
+STATUS_SUBMITTED: 'Inviata'
+STATUS_COMPLETE: 'Accettata'
+STATUS_REGISTERED: 'Protocollata'
+STATUS_PENDING: 'In carico'
+STATUS_COMPLETE_WAITALLEGATIOPERATORE: 'Accettata (in attesa di protocollazione del documento di esito)'
+STATUS_CANCELLED_WAITALLEGATIOPERATORE: 'Rifiutata (in attesa di protocollazione del documento di esito)'
+
+user:
+  dashboard:
+    title: 'La mia stanza'
+    pratiche_draft: 'Pratiche in bozza'
+    pratiche_pending: 'Pratiche inviate'
+    pratiche_completed: 'Pratiche accettate'
+    pratiche_cancelled: 'Pratiche rifiutate'
+    vai_al_dettaglio: 'Vedi dettaglio'
+    avvisi_notizie: 'Avvisi / Notizie'
+    scadenze: 'Scadenze'
+    servizi_primo_piano: 'Servizi in primo piano'
+    ultime_pratiche: "Pratiche recenti"
+    vedi_tutte: "(vedi tutte)"
+
+  profile:
+    title: 'Profilo utente'
+    info_da_sdc: 'Informazioni utente'
+    dati_da_cps_guida: 'Queste informazioni sono state ricavate dalla carta provinciale dei servizi con cui ti sei autenticato e non possono essere modificate in questa applicazione'
+    nome: 'Nome'
+    cognome: 'Cognome'
+    sesso: 'Sesso'
+    codice_fiscale: 'Codice fiscale'
+    telefono: 'Numero di telefono'
+    email: 'Indirizzo email'
+    data_nascita: 'Data di nascita'
+    luogo_nascita: 'Luogo di nascita'
+    contatti_per_sdc: 'Contatti per la Stanza del cittadino'
+    contatti_per_sdc_guida: 'Il sistema utilizzerà questi recapiti per inviarti notifiche e segnalazioni'
+    cellulare: 'Numero di telefono cellulare (*)'
+    indirizzo: 'Indirizzo'
+    citta: 'Città'
+    cap: 'Cap'
+    provincia: 'Provincia'
+    stato: 'Stato'
+    residenza: 'Residenza'
+    domicilio: 'Domicilio'
+    salva_informazioni_contatto: 'Salva informazioni contatto'
+    salva_informazioni_profilo: 'Salva informazioni profilo'
+
+operatori:
+  allega_risposta_firmata: 'Allega la risposta firmata'
+  vai_al_dettaglio: 'Vedi dettaglio'
+  prendi_in_carico_pratica: 'Prendi in carico'
+  sicuro_di_prendere_in_carico_la_pratica: 'Confermi la presa in carico della pratica %name%?'
+  si: 'Sì, sono sicuro'
+  no: "No, annulla l'operazione"
+  pratiche_mie: 'Pratiche da gestire'
+  pratiche_libere: 'Pratiche da assegnare'
+  pratiche_concluse: 'Pratiche concluse'
+  torna_alle_pratiche: "Torna all'elenco pratiche"
+  allega: 'Allega'
+  approva: 'Approva'
+  rifiuta: 'Rifiuta'
+  elabora: 'Elabora'
+  richiedi_intergrazioni: 'Richiedi intergrazioni'
+  allegati: 'Allegati'
+  commenti_e_modifiche: 'Commenti'
+  aggiungi_commento: 'Aggiungi commento'
+  scarica: 'Scarica'
+  scarica_ricevuta_provvisoria: 'Scarica la richiesta inviata alla protocollazione'
+  scarica_ricevuta_provvisoria_info: "<strong>Attenzione:</strong> Il documento compilato con i dati della richiesta e tutti gli eventuali allegati inseriti sono stati inviati al sistema di protocollo comunale.<br /> Non appena i documenti saranno protocollati, riceverai una comunicazione email di conferma.<br /> Puoi controllare l'avvenuta protocollazione ricaricando la pagina o accedendo alla pratica dal menu <em>Le mie pratiche</em>."
+  scarica_modulo_compilato: 'Scarica il modulo compilato'
+  scarica_risposta_firmata: 'Scarica il file di risposta firmato (formato p7m)'
+  torna_alla_lista_operatori: 'Torna alla lista operatori'
+  flow:
+    approva_o_rigetta:
+      guida_alla_compilazione: 'Esprimi un esito sulla pratica ed eventualmente una motivazione'
+      esito_label: 'Approva o rifiuta la pratica'
+      motivazione:esito_label: "Esprimi una motivazione sull'esito"
+    upload_risposta_firmata:
+      testo_descrittivo: 'Scarica la risposta dal seguente <strong><a href="%link_download_risposta%">link</a></strong> e ricaricala firmata digitalmente <hr/>'
+      guida_alla_compilazione: 'Scarica la risposta da firmare digitalmente'
+      allega_risposta_firmata: 'Allega la risposta firmata digitalmente'
+    allega_documentazione_richiesta: 'Allega documentazione richiesta'
+    concludi: 'Concludi elaborazione'
+  profile:
+    title: 'Profilo operatore'
+    nome: 'Nome'
+    cognome: 'Cognome'
+    email: 'Email'
+    ente: 'Ente'
+    ambito: 'Ambito'
+    salva_modifiche: 'Salva modifiche'
+
+allegato:
+  nome_file: 'Nome del file'
+  descrizione_file: 'Descrizione del file'
+  scarica_allegato: 'Scarica file'
+  scarica_allegato_in_attesa_di_protocollazione: 'Scarica file inviato alla protocollazione'
+  crea_allegato: 'Carica un allegato'
+  non_supportato: 'Il file che stai cecando di caricare non è di un tipo supportato. I tipi supportati sono pdf jpg gif png'
+  guida_alla_compilazione:
+    crea: 'Seleziona il file da caricare, deve essere una immagine (png bmp gif jpg) o un file pdf. Dai al fle una descrizione che ti aiuti a identificarlo'
+  non_cancellabile: 'Questo allegato è presente in moduli correttamente inviati e perciò non è cancellabile'
+  aggiungi: 'Aggiungi un allegato'
+  cancellato: 'Allegato cancellato correttamente'
+
+email:
+  detail_link: 'link'
+  pratica:
+    dear: 'Gentile <strong>%user_name%</strong>,'
+    thanks: 'La ringraziamo per aver utilizzato la stanza del cittadino.'
+    link: 'Per ulteriori dettagli visiti il seguente '
+    link_txt: 'Per ulteriori dettagli visiti il seguente link: '
+    user:
+      status:
+        submitted: "le comunichiamo che la sua domanda per il servizio <strong>%servizio%</strong> è stata ricevuta dai nostri sistemi."
+        registered: "le comunichiamo che la sua domanda per il servizio <strong>%servizio%</strong> è stata protocollata, il numero di protocollo è <strong>%protocollo%</strong>.<br />Il prima possibile verrà presa in carico da un nostro operatore che provvederà al controllo e all'elaborazione della pratica."
+        cancelled: 'le comunichiamo che la sua domanda per il servizio <strong>%servizio%</strong> è stata rifiutata.'
+        complete: 'le comunichiamo che la sua domanda per il servizio <strong>%servizio%</strong> è stata accettata.'
+        complete.waitallegatioperatore: 'le comunichiamo che la sua domanda per il servizio <strong>%servizio%</strong> è stata elaborata ed è in attesa della protocollazione di nuovi file allegati.'
+        pending: "le comunichiamo che la sua domanda per il servizio <strong>%servizio%</strong> è stata presa in carico da un nostro operatore."
+        draft: ''
+    operatore:
+      status:
+        submitted: "la domanda dell'utente <strong>%user_pratica%</strong> per il servizio <strong>%servizio%</strong> è stata ricevuta dai nostri sistemi."
+        registered: "la domanda dell'utente <strong>%user_pratica%</strong> dell'utente <strong>%user_pratica%</strong> per il servizio <strong>%servizio%</strong> è stata protocollata. Il numero di protocollo è <strong>%protocollo%</strong>."
+        cancelled: "hai rifiutato la domanda dell'utente <strong>%user_pratica%</strong> per il servizio <strong>%servizio%</strong>."
+        complete: "hai accettato la domanda dell'utente <strong>%user_pratica%</strong> per il servizio <strong>%servizio%</strong>."
+        complete.waitallegatioperatore: "la domanda dell'utente <strong>%user_pratica%</strong> per il servizio <strong>%servizio%</strong> è stata elaborata ed è in attesa della protocollazione dei nuovi file allegati."
+        pending: "hai preso in carico la domanda dell'utente <strong>%user_pratica%</strong> per il servizio <strong>%servizio%</strong>"
+        draft: ''
+messaggi:
+  messaggio: 'Messaggio'
+  invia: 'Invia'
+chat:
+  loading: ' Recupero dei messaggi in corso'
+  title:
+    user: 'Hai bisogno di aiuto?'
+    operatore: 'Filo diretto'
+  io:
+    chat_name: 'Io'
+
+        
+steps:
+    common:
+        seleziona_ente:
+            label: "Ente"
+            title: 'Selezione del comune di riferimento'
+            guida_alla_compilazione: "Seleziona dal menu a tendina l'ente a cui inviare la richiesta"
+
+        accettazione_istruzioni:
+            label: 'Istruzioni'
+            title: 'Istruzioni sulla procedura'
+            guida_alla_compilazione: 'Leggi e accetta le istruzioni di compilazione'
+            accetto_istruzioni: 'Ok mi è chiaro'
+
+        dati_richiedente:
+            label: 'Richiedente'
+            title: 'Dati del richiedente'
+            guida_alla_compilazione: 'I dati del richiedente sono modificabili dalla <a href="/user/profile">pagina dedicata al <u>tuo profilo</u></a>'
+            richiedente_nome: 'Nome'
+            richiedente_cognome: 'Cognome'
+            richiedente_luogo_nascita: 'Luogo di nascita'
+            richiedente_data_nascita: 'Data di nascita'
+            richiedente_indirizzo_residenza: 'Indirizzo'
+            richiedente_cap_residenza: 'CAP'
+            richiedente_citta_residenza: 'Città'
+            richiedente_telefono: 'Telefono'
+            richiedente_email: 'Email'
+
+        conferma:
+            label: 'Controllo e conferma'
+            title: 'Controllo e conferma'
+            sei_sicuro_di_inviare: 'Sei sicuro di aver compilato il modulo correttamente e di voler inviare la pratica?'
+            si: 'Sì, sono sicuro'
+            no: 'No'
+
+        nucleo_familiare:
+            label: 'Nucleo familiare'
+            title: 'Composizione del nucleo familiare'
+            guida_alla_compilazione: 'Inserisci i componenti del nucleo familiare'
+
+        carica_allegati:
+            label: 'Allegati'
+            title: 'Caricamento degli allegati'
+            guida_alla_compilazione: "Inserisci gli allegati"
+
+        org_richiedente:
+            label: 'Organizzazione richiedente'
+            title: 'Organizzazione richiedente'
+            ruolo_utente: 'In qualità di'
+            ragione_sociale: 'Ragione sociale'
+            cf: 'Codice fiscale'
+            piva: 'Partita Iva'
+            indirizzo: 'Indirizzo'
+            civico: 'Numero civico'
+            cap: 'Cap'
+            comune: 'Comune'
+            provincia: 'Provincia'
+            email: 'Indirizzo Email'
+            tel: 'Numero di telefono'
+
+        dati_conto_corrente:
+            label: 'Dati Conto Corrente'
+            title: 'Dati Conto Corrente'
+            iban: 'Codice Iban'
+            intestatario: 'Intestatario conto'
+            guida_alla_compilazione: 'Inserisci i dati del conto corrente'
+
+    allacciamento_acquedotto:
+        dati_immobile:
+            label: 'Immobile'
+            title: "Dati dell'immobile"
+            guida_alla_compilazione: "Inserire i dati dell'immobile e a che titolo viene fatta la richiesta"
+            datiImmobile: "Dati dell'immobile"
+            qualifica: "Qualifica del richiedente"
+            provincia: "Provincia"
+            comune: "Comune"
+            indirizzo: "Indirizzo"
+            numero_civico: "Numero civico"
+            cap: "CAP"
+            scala: "Scala"
+            piano: "Piano"
+            interno: "Interno"
+            catasto_categoria: "Categoria catastale"
+            catasto_codice_comune: "Codice catastale del comune"
+            catasto_foglio: "Foglio"
+            catasto_sezione: "Sezione"
+            catasto_mappale: "Particella Mappale"
+            catasto_subalterno: "Subalterno"
+
+        dati_intervento:
+            label: 'Intervento'
+            title: "Tipologia di intervento"
+            guida_alla_compilazione: "Inserire i dati dell'intervento"
+            tipo_intervento: "Tipologia di intervento"
+            tipo_allaccio: "Tipologia di allaccio"
+            tipo_uso: "Tipologia d'utilizzo"
+            diametro_rete_interna: "Diametro rete interna"
+
+        dati_contatto:
+            label: 'Contatti'
+            title: 'Contatti'
+            guida_alla_compilazione: "Specificare indirizzo per comunicazioni e rimborsi"
+            use_alternate: "Utilizza i segenti dati"
+            indirizzo: "Indirizzo"
+            numero_civico: "Numero civico"
+            cap: "CAP"
+            comune: "Comune"
+    
+    autolettura_acqua:
+        dati_intestatario:
+            label: 'Intestatario'
+            title: "Dati dell'intestatario del contratto"
+            guida_alla_compilazione: "I dati dell'intestatario del contratto sono reperibili nell'ultima fattura ricevuta"
+            intestatario_codice_utente: "Codice utenza"
+            intestatario_nome: "Nome"
+            intestatario_cognome: "Cognome"
+            intestatario_indirizzo: "Indirizzo"
+            intestatario_cap: "CAP"
+            intestatario_citta: "Città"
+            intestatario_telefono: "Recapito telefonico per eventuali comunicazioni"
+            intestatario_email: "Recapito email per eventuali comunicazioni"
+
+        dati_contatore:
+            label: "Contatore"
+            title: "Contatore"
+            guida_alla_compilazione: "I dati del contatore sono reperibili nell'ultima fattura ricevuta"
+            contatore_numero: "Numero (da leggere sulla ghiera d'ottone del contatore)"
+            contatore_uso: "Tipologia di utilizzo del contatore"
+            contatore_unita_immobiliari: "Numero di unità immobiliari (appartamenti, negozi, uffici, ...) serviti dal contatore"
+
+        dati_lettura:
+            label: "Lettura"
+            title: "Dati della lettura"
+            guida_alla_compilazione: "La lettura del contatore si esegue considerando le cifre intere di colore nero (quelle prima di un'eventuale virgola) da sinistra verso destra. Se l'ultima cifra non è allineata alla altre, va considerata quella inferiore. Le lancette degli orologi, invece, non vanno lette."
+            lettura_metri_cubi: "Lettura dei metri cubi"
+            lettura_data: "Data della rilevazione"
+
+        note:
+            label: "Altre comunicazioni"
+            title: "Altre comunicazioni"
+            guida_alla_compilazione: "Utilizza questo campo per la segnalazione di guasti o altre comunicazioni"
+
+    cambio_residenza:
+
+        dichiarazione_provenienza:
+            label: "Provenienza"
+            title: "Dichiarazione della provenienza"
+            guida_alla_compilazione: "Dichiarazione della provenienza: da un altro comune, dall'estero o dallo stesso comune"
+            comune: "Dichiarazione di cambiamento di abitazione nell’ambito dello stesso comune"
+            altro_comune: "Dichiarazione di residenza con provenienza da altro comune"
+            estero: "Dichiarazione di residenza con provenienza dall’estero"
+            aire: "Dichiarazione di residenza di cittadini italiani iscritti all’AIRE (Anagrafe degli italiani residenti all’estero) con provenienza dall’estero"
+            altro: "Dichiarazione di residenza per altro motivo"
+
+        dichiarazione_provenienza_dettaglio:
+            label: 'Provenienza (dettaglio)'
+            title: "Dettagli provenienza"
+            guida_alla_compilazione:
+                nessun_allegato: "Per il tipo di provenienza selezionato non sono necessarie altre informazioni"
+                altro_comune: "Indicare il comune di provenienza"
+                stato_estero: "Indicare lo Stato estero di provenienza"
+                aire: "Indicare lo Stato estero e il comune AIRE di provenienza"
+                altro_motivo: "Specificare il motivo"
+
+        dati_residenza:
+            label: "Residenza"
+            title: "Dati residenza"
+            guida_alla_compilazione: "Specifica il nuovo indirizzo di residenza"
+            provincia: "Provincia"
+            comune: "Comune"
+            indirizzo: "Via/Piazza"
+            numero_civico: "Numero civico"
+            scala: "Scala"
+            piano: "Piano"
+            interno: "Interno"
+
+        attualmente_residenti:
+            label: "Residenti"
+            title: "Persone già iscritte nella nuova abitazione"
+            guida_alla_compilazione: "Inserisci le eventuali persone già residenti nell'abitazione per la quale chiedi la residenza"
+
+        tipologia_occupazione:
+            label: "Tipologia"
+            title: "Tipologia di occupazione"
+            guida_alla_compilazione: "Dichiarazione riguardante la tipologia di occupazione della nuova residenza"
+            proprietario: "Proprietario dell'abitazione"
+            locazione: "Intestatario del contratto di locazione regolarmente registrato presso l'Agenzia delle Entrate"
+            locazione_erp: "Intestatario di contratto di locazione relativo a immobile di Edilizia Residenziale Pubblica"
+            comodato: "Comodatario con contratto di comodato d'uso gratuito regolarmente registato presso l'Agenzia delle Entrate"
+            usufruttuario: "Usufruttuario"
+            autocertificazione: "Autocertificazione del proprietario dell'appartamento"
+
+        tipologia_occupazione_dettaglio:
+            label: "Tipologia (dettaglio)"
+            title: "Dettagli della tipologia di occupazione"
+            guida_alla_compilazione:
+                proprietario: "Specifica i valori catastali dell'abitazione di proprietà"
+                locazione: "Specifica i dettagli del contratto di locazione regolarmente registrato presso l'Agenzia delle Entrate"
+                locazione_erp: "Allega il contratto di locazione relativo a immobile di Edilizia Residenziale Pubblica"
+                comodato: "Specifica i dettagli del contratto di comodato d'uso gratuito regolarmente registato presso l'Agenzia delle Entrate"
+                usufruttuario: "Indicare dati utili a consentirne la verifica"
+                autocertificazione: "Allega l'autocertificazione del proprietario dell'appartamento"
+            proprietario:
+                catasto_sezione: "Sezione"
+                catasto_foglio: "Foglio"
+                catasto_particella: "Particella/Mappale"
+                catasto_subalterno: "Subalterno"
+            contratto:
+                agenzia: "Indirizzo agenzia entrate"
+                numero: "Numero contratto"
+                data: "Data di stipula del contratto"
+            verbale_consegna: "Scansione del contratto o del verbale di consegna dell'immobile"
+            usufruttuario_info: "Titolo costitutivo"
+            autocertificazione: "Autocertificazione del proprietario dell'appartamento"
+
+        informazioni_accertamento:
+            label: "Accertamento"
+            title: "Informazioni per accertamento dei dati"
+            guida_alla_compilazione: "Segnalare eventuali giorni ed orari di preferenza per la verifica delle autorità giudiziarie"
+
+    contributo_pannolini:
+        dati_bambino:
+            label: 'Dati del bambino'
+            title: 'Dati del bambino'
+            guida_alla_compilazione: 'Inserisci i dati del bambino per cui hai comprato i pannolini'
+            nome: 'Nome'
+            cognome: 'Cognome'
+            luogo_nascita: 'Luogo di nascita'
+            data_nascita: 'Data di nascita'
+
+        dati_acquisto:
+            label: "Dati dell'Acquisto"
+            title: "Dati dell'Acquisto"
+            guida_alla_compilazione: 'Inserisci i dati relativi allo scontrino, la scansione dello scontrino andrà allegata nello passaggio successivo'
+            tipo_pannolini: 'Tipo dei pannolini acquistati'
+            punto_vendita: 'Nome del punto vendita'
+            data_acquisto: 'Data di acquisto'
+            totale_spesa: "Importo speso (inserire l'importo speso solo per i pannolini)"
+
+        dati_conto_corrente:
+            label: 'Dati Conto Corrente'
+            title: 'Dati Conto Corrente'
+            guida_alla_compilazione: 'Inserisci i dati del conto corrente'
+
+    iscrizione_asilo_nido:
+        seleziona_nido:
+            label: 'Struttura'
+            title: 'Selezione della struttura'
+            guida_alla_compilazione: "Seleziona dal menu a tendina l'asilo nido a cui intendi iscrivere il bambino"
+
+        accettazione_utilizzo:
+            label: 'Accettazione'
+            title: 'Termini di fruizione della struttura'
+            guida_alla_compilazione: "Leggi e accetta le condizioni di utilizzo dell'asilo nido che hai selezionato"
+            accetto_utilizzo: 'Ho letto i termini di fruizione della struttura'
+
+        seleziona_orari:
+            label: 'Orari e periodo'
+            title: 'Selezione degli orari e del periodo di iscrizione'
+            guida_alla_compilazione: "Seleziona nel menu a tendina l'orario che preferisci e scrivi il periodo di in cui intendi iscrivere il bambino all'asilo nido"
+            seleziona_orario: 'Orario prescelto'
+            periodo_iscrizione_da: 'Periodo iscrizione da'
+            periodo_iscrizione_a: 'Periodo iscrizione a'
+            error: "La data di fine iscrizione deve essere maggiore di quella d'inizio"
+
+        dati_bambino:
+            label: 'Dati del bambino'
+            title: 'Dati del bambino'
+            guida_alla_compilazione: 'Inserisci i dati del bambino che intendi iscrivere'
+            nome: 'Nome'
+            cognome: 'Cognome'
+            luogo_nascita: 'Luogo di nascita'
+            data_nascita: 'Data di nascita'
+
+        allega_attestazione_icef:
+            label: 'Attestazione ICEF'
+            title: 'Attestazione ICEF per i servizi alla prima infanzia'
+            guida_alla_compilazione: "Allega l'attestazione ICEF per i servizi alla prima infanzia (in mancanza dell’attestazione verranno applicate le tariffe massime. L’eventuale tariffa agevolata sarà applicata dal primo giorno del mese successivo a quello di presentazione dell’attestazione al Comune)"
+
+    occupazione_suolo_pubblico:
+        org_richiedente:
+            label: 'Organizzazione richiedente'
+            title: 'Organizzazione richiedente'
+            ruolo_utente: 'In qualità di'
+            ragione_sociale: 'Ragione sociale'
+            indirizzo: 'Indirizzo'
+            civico: 'Numero civico'
+            cap: 'Cap'
+            comune: 'Comune'
+            provincia: 'Provincia'
+
+        occupazione:
+            label: 'Luogo occupazione'
+            title: 'Luogo occupazione'
+            indirizzo: 'Indirizzo'
+            civico: 'Numero civico'
+            lunghezza: 'Lunghezza in cm'
+            larghezza: 'Larghezza in cm'
+            metri_quadri: 'Metri quadrati'
+            motivazione: 'Motivazione'
+
+        tipologia_occupazione:
+            label: 'Tipologia occupazione'
+            title: 'Tipologia occupazione'
+            tipologia: 'Tipologia'
+
+        tempo_occupazione:
+            label: 'Tempo di occupazione'
+            title: 'Tempo di occupazione'
+            inizio_giorno: 'Giorno inizio occupazione'
+            inizio_ora: 'Ora inizio occupazione'
+            fine_giorno: 'Giorno fine occupazione'
+            fine_ora: 'Ora fine occupazione'
+            error: 'Selezionare un giorno di inizio precedente a quello di fine'
+
+    contributo_associazioni:
+        tipologia_attivita:
+            label: 'Tipologia attività'
+            title: 'Tipologia attività'
+            tipologia: 'Selezionare il tipo di attività'
+            commerciale: 'Svolge attività commerciale'
+            non_commerciale: 'Non svolge attività commerciale (art. 108 del Testo Unico delle Imposte sui redditi)'
+            guida_alla_compilazione: "Seleziona la tipologia di attività che l'organizzazione svolge"
+
+        contributo:
+            label: 'Uso del contributo'
+            title: 'Uso del contributo'
+            tipologia_contributo: 'Tipologia contributo'
+            beni_strumentali: 'Acquisto di beni strumentali'
+            fini_istituzionali_commerciali: 'Attività per il perseguimento di fini istituzionali a carattere commerciale'
+            fini_istituzionali_non_commerciali: 'Attività per il perseguimento di fini istituzionali non a carattere commerciale'
+            manifestazione_istituzionale_non_commerciale: 'Manifestazione rientrante nell’attività istituzionale non a carattere commerciale'
+            commerciale: 'Attività a carattere commerciale'
+            descrizione: 'Descrizione'
+            anno: 'Anno di attività'
+            guida_alla_compilazione: "Selezionare il tipo di contributo ed inserire descrizione ed anno dell'attività per cui si fa domanda"

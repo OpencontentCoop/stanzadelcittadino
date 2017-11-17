@@ -1,0 +1,5 @@
+{{ 'email.pratica.dear'|trans({'%user_name%' : user_name})|striptags }}
+{{ ('email.pratica.user.' ~ pratica.statusName|replace({'_':'.'})|lower)|trans({'%servizio%': pratica.servizio.name, '%protocollo%': pratica.numeroProtocollo})|striptags }}
+{{ 'email.pratica.thanks'|trans() }}
+{{ 'email.pratica.link_txt'|trans }}
+{{ absolute_url(path('pratiche_show', {'pratica': pratica}))  }}

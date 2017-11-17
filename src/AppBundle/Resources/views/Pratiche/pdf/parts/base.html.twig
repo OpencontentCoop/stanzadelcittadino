@@ -1,0 +1,24 @@
+{% if pratica.ente != null %}
+    <div class="destinatario">
+        <p><em>{{ 'pratica.pdf.spett_le'|trans() }}</em><br /><strong>{{ pratica.ente.name }}</strong></p>
+    </div>
+{% endif %}
+
+<div class="oggetto">
+    <p>
+        {{ 'pratica.pdf.oggetto'|trans() }} {{ oggetto|default(pratica.servizio.name) }}
+    </p>
+</div>
+
+<div class="dati_richiedente">
+    <p>
+        {{ 'pratica.pdf.il_sottoscritto'|trans() }} <span class="text-uppercase">{{ pratica.richiedenteCognome }} {{ pratica.richiedenteNome }}</span> {%  if pratica.user.sesso %}sesso <span class="text-uppercase">{{ pratica.user.sesso }}</span>{% endif %}
+        {{ 'pratica.pdf.nato_il'|trans() }} <span class="text-uppercase">{{ pratica.richiedenteDataNascita|date("d/m/Y") }}</span> {%  if pratica.richiedenteLuogoNascita %}a <span class="text-uppercase">{{ pratica.richiedenteLuogoNascita }}</span>{% endif %}
+        <br />
+        {{ 'pratica.pdf.codice_ficale'|trans() }} <span class="text-uppercase">{{ pratica.user.codiceFiscale }}</span>
+        <br />
+        {{ 'pratica.pdf.residente_in'|trans() }} <span class="text-uppercase">{{ pratica.richiedenteIndirizzoResidenza }}{{ pratica.richiedenteCapResidenza }} {{ pratica.richiedenteCittaResidenza }}</span>
+        <br />
+        {{ 'pratica.pdf.telefono'|trans() }} <span class="text-uppercase">{{ pratica.richiedenteTelefono }}</span> {{ 'pratica.pdf.email'|trans() }} <span class="text-uppercase">{{ pratica.richiedenteEmail }}</span>
+    </p>
+</div>

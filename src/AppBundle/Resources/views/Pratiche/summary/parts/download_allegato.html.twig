@@ -1,0 +1,6 @@
+{% set download_allegato_path = user.id == pratica.user.id ? 'allegati_download_cpsuser' : 'allegati_download_operatore' %}
+{% if pratica.status >= constant('STATUS_REGISTERED', pratica) %}
+    <a href="{{ path( download_allegato_path, {'allegato': allegato.id}) }}" class="btn btn-xs btn-info">{{ 'allegato.scarica_allegato'|trans }}</a>
+{% else %}
+    <a href="{{ path( download_allegato_path, {'allegato': allegato.id}) }}">{{ 'allegato.scarica_allegato_in_attesa_di_protocollazione'|trans }}</a>
+{% endif %}

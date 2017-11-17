@@ -1,0 +1,414 @@
+#wrapper #content:after, main.browse .browse-panes:after, .topics-page header.page-header .full-width .metadata:after {
+    content: "";
+    display: block;
+    clear: both
+}
+
+@-ms-viewport {
+    width: device-width
+}
+
+@-o-viewport {
+    width: device-width
+}
+
+/*
+div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, small, strike, strong, sub, sup, tt, var, b, u, i, center, input, textarea, table, caption, tbody, tfoot, thead, tr, th, td {
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+    font-weight: normal
+}
+*/
+
+#wrapper h3,
+#wrapper ul {
+    border: none;
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+    font-weight: normal
+}
+
+#wrapper {
+    background-color: #fff;
+}
+
+#wrapper #content {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    max-width: 1020px
+}
+
+main.browse .browse-panes {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 30px;
+    position: relative
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes {
+        padding-left: 30px;
+        padding-right: 30px
+    }
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes {
+        padding-top: 30px
+    }
+}
+
+main.browse .browse-panes.section #root {
+    display: none
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes.section #root {
+        display: block;
+        float: right;
+        width: 25%
+    }
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes.section #section {
+        float: right;
+        width: 30%;
+        margin-right: 45%
+    }
+}
+
+@media (min-width: 769px) {
+    main.browse .browse-panes.section #section {
+        width: 35%;
+        margin-right: 40%
+    }
+}
+
+main.browse .browse-panes.subsection #root, main.browse .browse-panes.subsection #section {
+    display: none;
+    color: #6f777b
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes.subsection #root, main.browse .browse-panes.subsection #section {
+        display: block;
+        float: right;
+        width: 25%
+    }
+}
+
+main.browse .browse-panes.subsection #root a, main.browse .browse-panes.subsection #root p, main.browse .browse-panes.subsection #section a, main.browse .browse-panes.subsection #section p {
+    color: #6f777b
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes.subsection #section {
+        margin-left: -18%;
+        width: 30%
+    }
+}
+
+@media (min-width: 769px) {
+    main.browse .browse-panes.subsection #section {
+        margin-left: -13%;
+        width: 25%
+    }
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes.subsection #subsection {
+        float: right;
+        width: 50%;
+        margin-right: 13%
+    }
+}
+
+main.browse .browse-panes .pane-inner {
+    padding-bottom: 30px
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes .pane-inner {
+        border-left: 1px solid #bfc1c3;
+        min-height: 950px
+    }
+}
+
+@media (min-width: 769px) {
+    main.browse .browse-panes .pane-inner {
+        min-height: 700px
+    }
+}
+
+main.browse .browse-panes h1, main.browse .browse-panes h2 {
+    font-size: 20px;
+    line-height: 1.11111;
+    font-weight: 700;
+    text-transform: none;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    outline: none
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes h1, main.browse .browse-panes h2 {
+        font-size: 27px;
+        line-height: 1.11111
+    }
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes h1, main.browse .browse-panes h2 {
+        margin-top: 0;
+        margin-bottom: 15px
+    }
+}
+
+main.browse .browse-panes #root, main.browse .browse-panes #section {
+    min-height: 20px
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes #root h1, main.browse .browse-panes #root h2, main.browse .browse-panes #section h1, main.browse .browse-panes #section h2 {
+        padding-left: 15px
+    }
+}
+
+main.browse .browse-panes #root .sort-order, main.browse .browse-panes #section .sort-order {
+    display: none
+}
+
+main.browse .browse-panes #root ul li, main.browse .browse-panes #section ul li {
+    list-style: none;
+    position: relative
+}
+
+main.browse .browse-panes #root ul a, main.browse .browse-panes #section ul a {
+    position: relative;
+    display: block;
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: 400;
+    text-transform: none;
+    text-decoration: none;
+    padding: 12px 25px 8px 0
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes #root ul a, main.browse .browse-panes #section ul a {
+        font-size: 19px;
+        line-height: 1.31579
+    }
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes #root ul a, main.browse .browse-panes #section ul a {
+        padding: 12px 30px 8px 15px;
+        font-size: 14px;
+        line-height: 1.14286;
+        font-weight: 400;
+        text-transform: none
+    }
+}
+
+@media (min-width: 641px) and (min-width: 641px) {
+    main.browse .browse-panes #root ul a, main.browse .browse-panes #section ul a {
+        font-size: 16px;
+        line-height: 1.25
+    }
+}
+
+main.browse .browse-panes #root ul a:hover, main.browse .browse-panes #section ul a:hover {
+    background: #dee0e2;
+    color: #1571c1
+}
+
+main.browse .browse-panes #root ul a:after, main.browse .browse-panes #section ul a:after {
+    position: absolute;
+    top: 50%;
+    margin-top: -8px;
+    right: 10px;
+    float: right;
+    content: "\203A"
+}
+
+main.browse .browse-panes #root ul a.loading, main.browse .browse-panes #section ul a.loading {
+    cursor: default;
+    background: transparent url(../images/loading.gif) 95% 50% no-repeat
+}
+
+main.browse .browse-panes #root ul a.loading:after, main.browse .browse-panes #section ul a.loading:after {
+    content: ""
+}
+
+main.browse .browse-panes #root ul a h3, main.browse .browse-panes #section ul a h3 {
+    font-weight: bold
+}
+
+main.browse .browse-panes #root ul a p, main.browse .browse-panes #section ul a p {
+    color: #0b0c0c;
+    font-size: 12px;
+    line-height: 1.25;
+    font-weight: 400;
+    text-transform: none
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes #root ul a p, main.browse .browse-panes #section ul a p {
+        font-size: 14px;
+        line-height: 1.42857
+    }
+}
+
+main.browse .browse-panes #root ul li.active a, main.browse .browse-panes #section ul li.active a {
+    background: #1571c1;
+    color: #fff
+}
+
+main.browse .browse-panes #root ul li.active a:hover, main.browse .browse-panes #section ul li.active a:hover {
+    background: #1571c1
+}
+
+main.browse .browse-panes #root ul li.active a p, main.browse .browse-panes #section ul li.active a p {
+    color: #fff
+}
+
+main.browse .browse-panes #section {
+    z-index: 2;
+    background: #fff;
+    position: relative
+}
+
+@media (min-width: 769px) {
+    main.browse .browse-panes #section.with-sort .pane-inner {
+        padding-left: 30px
+    }
+
+    main.browse .browse-panes #section.with-sort .pane-inner.alphabetical {
+        padding-left: 96px
+    }
+
+    main.browse .browse-panes #section.with-sort .sort-order {
+        font-size: 20px;
+        line-height: 1.11111;
+        font-weight: 700;
+        text-transform: none;
+        float: left;
+        display: block;
+        width: 75px;
+        margin-left: -90px;
+        padding: 11px 0 15px 15px
+    }
+}
+
+@media (min-width: 769px) and (min-width: 641px) {
+    main.browse .browse-panes #section.with-sort .sort-order {
+        font-size: 27px;
+        line-height: 1.11111
+    }
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes #subsection .pane-inner.a-to-z {
+        padding-left: 100px
+    }
+
+    main.browse .browse-panes #subsection .pane-inner.curated-list {
+        padding-left: 30px
+    }
+}
+
+main.browse .browse-panes #subsection h1 {
+    padding-left: 0
+}
+
+main.browse .browse-panes #subsection .list-header {
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: 700;
+    text-transform: none;
+    margin: 30px 0 0 0
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes #subsection .list-header {
+        font-size: 19px;
+        line-height: 1.31579
+    }
+}
+
+main.browse .browse-panes #subsection .curated-list .list-header {
+    margin: 30px 0 5px 0
+}
+
+main.browse .browse-panes #subsection .sort-order {
+    display: none
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes #subsection .sort-order {
+        display: block;
+        font-size: 20px;
+        line-height: 1.11111;
+        font-weight: 700;
+        text-transform: none;
+        float: left;
+        width: 75px;
+        margin-left: -100px;
+        padding: 11px 0 15px 15px
+    }
+}
+
+@media (min-width: 641px) and (min-width: 641px) {
+    main.browse .browse-panes #subsection .sort-order {
+        font-size: 27px;
+        line-height: 1.11111
+    }
+}
+
+main.browse .browse-panes #subsection ul {
+    padding: 0;
+    list-style: none
+}
+
+main.browse .browse-panes #subsection ul li {
+    padding: 0;
+    margin: 0
+}
+
+main.browse .browse-panes #subsection ul li a {
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: 700;
+    text-transform: none;
+    display: block;
+    text-decoration: none;
+    padding: 10px 30px 10px 0
+}
+
+@media (min-width: 641px) {
+    main.browse .browse-panes #subsection ul li a {
+        font-size: 19px;
+        line-height: 1.31579
+    }
+}
+
+main.browse .browse-panes #subsection .curated-list ul li a {
+    padding: 5px 30px 5px 0
+}
+
+main.browse .browse-panes #subsection .detailed-guidance {
+    margin-top: 30px
+}

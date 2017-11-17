@@ -1,0 +1,21 @@
+{% use 'CraueFormFlowBundle:FormFlow:stepList_blocks.html.twig' %}
+
+{%- if flow.getStepLabels() is not empty -%}
+
+    <ul class="progress-indicator craue_formflow_steplist">
+        {% for stepLabel in flow.getStepLabels() %}
+            <li{{ block('craue_flow_stepList_class') }}>
+                {%- if craue_isStepLinkable(flow, loop.index) -%}
+                    <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all
+                    | merge(app.request.attributes.get('_route_params'))
+                    | craue_addDynamicStepNavigationParameters(flow, loop.index)) }}">
+                {% endif %}
+                <span class="bubble"></span>
+                        <small class="text">{{ block('craue_flow_stepLabel') }}</small>
+                {%- if craue_isStepLinkable(flow, loop.index) -%}
+                    </a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{%- endif -%}

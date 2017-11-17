@@ -1,0 +1,19 @@
+guzzle:
+  clients:
+    messages:
+      base_url: "%messages_backend_url%"
+      options:
+        timeout: 1
+      headers:
+        Accept: "application/json"
+    protocollo_cct:
+      base_url: "%pitre_adapter_url%"
+      options:
+        timeout: 50
+      headers:
+        Accept: "application/json"
+    comunweb:
+      options:
+        timeout: 3
+      headers:
+        Accept: "application/json"

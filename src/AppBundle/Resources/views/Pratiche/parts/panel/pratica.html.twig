@@ -1,0 +1,33 @@
+{% set text_limit = 100 %}
+
+<article class="panel panel-default pratica" data-user="{{ pratica.user.id }}" data-status="{{ pratica.status }}">
+    <div class="panel-body">
+
+        <h4 class="blu-italia-base-color">{{ pratica.servizio.name }}</h4>
+
+        {% if pratica.statusName == 'STATUS_CANCELLED' %}
+            <div class="alert alert-danger" role="alert"><i class="fa fa-times" aria-hidden="true"></i> {{ pratica.statusName|trans() }}</div>
+        {% elseif pratica.statusName == 'STATUS_DRAFT' %}
+            <div class="alert alert-info" role="alert"><i class="fa fa-info" aria-hidden="true"></i> {{ pratica.statusName|trans() }}</div>
+        {% elseif pratica.statusName == 'STATUS_SUBMITTED' %}
+            <div class="alert alert-info" role="alert"><i class="fa fa-info" aria-hidden="true"></i> {{ pratica.statusName|trans() }}</div>
+        {% elseif pratica.statusName == 'STATUS_COMPLETE' %}
+            <div class="alert alert-success" role="alert"><i class="fa fa-check" aria-hidden="true"></i> {{ pratica.statusName|trans() }}</div>
+        {% elseif pratica.statusName == 'STATUS_REGISTERED' %}
+            <div class="alert alert-info" role="alert"><i class="fa fa-info" aria-hidden="true"></i> {{ pratica.statusName|trans() }}</div>
+        {% else %}
+            <div class="alert alert-info" role="alert"><i class="fa fa-info" aria-hidden="true"></i> {{ pratica.statusName|trans() }}</div>
+        {% endif %}
+
+        <p><b>{{ 'pratica.data_di_creazione'|trans }}:</b> {{ pratica.creationTime|date(ocsdc_default_date_format) }}</p>
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <a class="btn btn-default" href="{{ path('pratiche_compila', {'pratica': pratica.id, 'instance': pratica.instanceId, 'step': pratica.lastCompiledStep}) }}">
+                    <i class="fa fa-arrow-circle-o-right"></i>
+                    {{ 'pratica.riprendi_pratica'|trans }}
+                </a>
+            </div>
+        </div>
+    </div>
+</article>

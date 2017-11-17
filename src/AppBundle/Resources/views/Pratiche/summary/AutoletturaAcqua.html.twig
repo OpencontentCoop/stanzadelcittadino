@@ -1,0 +1,54 @@
+<div id="pratica-summary">
+
+    {{ include('AppBundle:Pratiche/summary/parts:base.html.twig', {'pratica':pratica, 'user': user}) }}
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'autolettura_acqua.dettaglio.intestatario'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">
+            <dl class="dl-horizontal">
+                <dt>{{ 'autolettura_acqua.dettaglio.intestatario_codice_utente'|trans }}</dt>
+                <dd>{{ pratica.intestatarioCodiceUtente }}</dd>
+                <dt>{{ 'autolettura_acqua.dettaglio.intestatario_nome_completo'|trans }}</dt>
+                <dd>{{ pratica.intestatarioNome }} {{ pratica.intestatarioCognome }}</dd>
+                <dt>{{ 'autolettura_acqua.dettaglio.intestatario_indirizzo_completo'|trans }}</dt>
+                <dd>{{ pratica.intestatarioIndirizzo }} {{ pratica.intestatarioCap }} {{ pratica.intestatarioCitta }}</dd>
+                <dt>{{ 'autolettura_acqua.dettaglio.intestatario_telefono'|trans }}</dt>
+                <dd>{{ pratica.intestatarioTelefono }}</dd>
+                <dt>{{ 'autolettura_acqua.dettaglio.intestatario_email'|trans }}</dt>
+                <dd>{{ pratica.intestatarioEmail }}</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'autolettura_acqua.dettaglio.contatore'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">
+            <dl class="dl-horizontal">
+                <dt>{{ 'autolettura_acqua.dettaglio.contatore_numero'|trans }}</dt>
+                <dd>{{ pratica.contatoreNumero }}</dd>
+                <dt>{{ 'autolettura_acqua.dettaglio.contatore_uso'|trans }}</dt>
+                <dd>{{ pratica.contatoreUso }}</dd>
+                <dt>{{ 'autolettura_acqua.dettaglio.contatore_unita_immobiliari'|trans }}</dt>
+                <dd>{{ pratica.contatoreUnitaImmobiliari }}</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'autolettura_acqua.dettaglio.lettura'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">
+            <dl class="dl-horizontal">
+                <dt>{{ 'autolettura_acqua.dettaglio.lettura_metri_cubi'|trans }}</dt>
+                <dd>{{ pratica.letturaMetriCubi }}</dd>
+                <dt>{{ 'autolettura_acqua.dettaglio.lettura_data'|trans }}</dt>
+                <dd>{{ pratica.letturaData|date(ocsdc_default_date_format) }}</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'autolettura_acqua.dettaglio.note'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">{{ pratica.note }}</div>
+    </div>
+
+</div>

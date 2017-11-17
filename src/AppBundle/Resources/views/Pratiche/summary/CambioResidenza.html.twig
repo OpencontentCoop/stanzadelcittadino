@@ -1,0 +1,218 @@
+<div id="pratica-summary">
+
+    {{ include('AppBundle:Pratiche/summary/parts:base.html.twig', {'pratica':pratica, 'user': user}) }}
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'steps.cambio_residenza.dichiarazione_provenienza.title'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">
+            <p>{{ ('steps.cambio_residenza.dichiarazione_provenienza.' ~ pratica.provenienza)|trans }}</p>
+            {% if pratica.provenienza == 'altro_comune' %}
+                {{ pratica.comuneDiProvenienza }}
+            {% elseif pratica.provenienza == 'estero' %}
+                {{ pratica.statoEsteroDiProvenienza }}
+            {% elseif pratica.provenienza == 'aire' %}
+                {{ pratica.statoEsteroDiProvenienza }} {{ pratica.comuneEsteroDiProvenienza }}
+            {% elseif pratica.provenienza == 'altro' %}
+                {{ pratica.altraProvenienza }}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'steps.cambio_residenza.dati_residenza.title'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">
+            <table class="table table-bordered table-striped table-condensed cf">
+                <tr>
+                    <th width="1">{{ 'steps.cambio_residenza.dati_residenza.provincia'|trans }}</th>
+                    <td>{{ pratica.residenzaProvincia }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'steps.cambio_residenza.dati_residenza.comune'|trans }}</th>
+                    <td>{{ pratica.residenzaComune }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'steps.cambio_residenza.dati_residenza.indirizzo'|trans }}</th>
+                    <td>{{ pratica.residenzaIndirizzo }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'steps.cambio_residenza.dati_residenza.numero_civico'|trans }}</th>
+                    <td>{{ pratica.residenzaNumeroCivico }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'steps.cambio_residenza.dati_residenza.scala'|trans }}</th>
+                    <td>{{ pratica.residenzaScala }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'steps.cambio_residenza.dati_residenza.piano'|trans }}</th>
+                    <td>{{ pratica.residenzaPiano }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'steps.cambio_residenza.dati_residenza.interno'|trans }}</th>
+                    <td>{{ pratica.residenzaInterno }}</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+
+    {{ include('AppBundle:Pratiche/summary/parts:nucleo_familiare.html.twig', {'pratica':pratica, 'user': user}) }}
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'steps.cambio_residenza.attualmente_residenti.title'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">
+            <div id="no-more-tables">
+                <table class="table table-bordered table-striped table-condensed cf">
+                    <thead class="cf">
+                    <tr>
+                        <th>{{ 'pratica.dettaglio.componente_nucleo_familiare.cognome'|trans }}</th>
+                        <th>{{ 'pratica.dettaglio.componente_nucleo_familiare.nome'|trans }}</th>
+                        <th>{{ 'pratica.dettaglio.componente_nucleo_familiare.codice_fiscale'|trans }}</th>
+                        <th>{{ 'pratica.dettaglio.componente_nucleo_familiare.rapporto_di_parentela'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for componente in pratica.personeResidenti %}
+                        <tr>
+                            <td data-title="{{ 'pratica.dettaglio.componente_nucleo_familiare.cognome'|trans }}">{{ componente.cognome }} </td>
+                            <td data-title="{{ 'pratica.dettaglio.componente_nucleo_familiare.nome'|trans }}">{{ componente.nome }}</td>
+                            <td data-title="{{ 'pratica.dettaglio.componente_nucleo_familiare.abbr_codice_fiscale'|trans }}">{{ componente.codiceFiscale }}</td>
+                            <td data-title="{{ 'pratica.dettaglio.componente_nucleo_familiare.abbr_rapporto_di_parentela'|trans }}">{{ componente.rapportoParentela }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'steps.cambio_residenza.tipologia_occupazione.title'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">
+            <p>{{ ('steps.cambio_residenza.tipologia_occupazione.' ~ pratica.tipoOccupazione)|trans }}</p>
+
+            {% if pratica.tipoOccupazione == 'proprietario' %}
+                <table class="table table-bordered table-striped table-condensed cf">
+                    <tr>
+                        <th width="1">{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.proprietario.catasto_sezione'|trans }}</th>
+                        <td>{{ pratica.proprietarioCatastoSezione }}</td>
+                    </tr>
+                    <tr>
+                        <th width="1">{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.proprietario.catasto_foglio'|trans }}</th>
+                        <td>{{ pratica.proprietarioCatastoFoglio }}</td>
+                    </tr>
+                    <tr>
+                        <th width="1">{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.proprietario.catasto_particella'|trans }}</th>
+                        <td>{{ pratica.proprietarioCatastoParticella }}</td>
+                    </tr>
+                    <tr>
+                        <th width="1">{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.proprietario.catasto_subalterno'|trans }}</th>
+                        <td>{{ pratica.proprietarioCatastoSubalterno }}</td>
+                    </tr>
+                </table>
+
+            {% elseif pratica.tipoOccupazione == 'locazione' %}
+                <table class="table table-bordered table-striped table-condensed cf">
+                    <tr>
+                        <th width="1">{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.contratto.agenzia'|trans }}</th>
+                        <td>{{ pratica.contrattoAgenzia }}</td>
+                    </tr>
+                    <tr>
+                        <th width="1">{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.contratto.numero'|trans }}</th>
+                        <td>{{ pratica.contrattoNumero }}</td>
+                    </tr>
+                    <tr>
+                        <th width="1">{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.contratto.data'|trans }}</th>
+                        <td>{{ pratica.contrattoData|date(ocsdc_default_date_format) }}</td>
+                    </tr>
+                </table>
+
+            {% elseif pratica.tipoOccupazione == 'locazione_erp' %}
+
+                {% if pratica.allegati|length > 0 %}
+                    <div id="no-more-tables">
+                        <table class="table table-bordered table-striped table-condensed cf">
+                            <thead class="cf">
+                            <tr>
+                                <th>{{ 'pratica.dettaglio.allegato.file'|trans }}</th>
+                                <th>{{ 'pratica.dettaglio.allegato.descrizione'|trans }}</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for allegato in pratica.allegati %}
+                                <tr>
+                                    <td data-title="{{ 'pratica.dettaglio.allegato.file'|trans }}">{{ allegato.originalFilename }}</td>
+                                    <td data-title="{{ 'pratica.dettaglio.allegato.descrizione'|trans }}">{{ allegato.description }}</td>
+                                    <td data-title="">
+                                        {{ include('AppBundle:Pratiche/summary/parts:download_allegato.html.twig', {'pratica':pratica, 'user': user, 'allegato': allegato}) }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+
+            {% elseif pratica.tipoOccupazione == 'comodato' %}
+
+                <table class="table table-bordered table-striped table-condensed cf">
+                    <tr>
+                        <th width="1">{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.contratto.agenzia'|trans }}</th>
+                        <td>{{ pratica.contrattoAgenzia }}</td>
+                    </tr>
+                    <tr>
+                        <th width="1">{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.contratto.numero'|trans }}</th>
+                        <td>{{ pratica.contrattoNumero }}</td>
+                    </tr>
+                    <tr>
+                        <th width="1">{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.contratto.data'|trans }}</th>
+                        <td>{{ pratica.contrattoData|date(ocsdc_default_date_format) }}</td>
+                    </tr>
+                </table>
+
+            {% elseif pratica.tipoOccupazione == 'usufruttuario' %}
+
+                {{ pratica.usufruttuarioInfo }}
+
+            {% elseif pratica.tipoOccupazione == 'autocertificazione' %}
+
+                {% if pratica.allegati|length > 0 %}
+                    <div id="no-more-tables">
+                        <table class="table table-bordered table-striped table-condensed cf">
+                            <thead class="cf">
+                            <tr>
+                                <th>{{ 'pratica.dettaglio.allegato.file'|trans }}</th>
+                                <th>{{ 'pratica.dettaglio.allegato.descrizione'|trans }}</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for allegato in pratica.allegati %}
+                                <tr>
+                                    <td data-title="{{ 'pratica.dettaglio.allegato.file'|trans }}">{{ allegato.originalFilename }}</td>
+                                    <td data-title="{{ 'pratica.dettaglio.allegato.descrizione'|trans }}">{{ allegato.description }}</td>
+                                    <td data-title="">
+                                        {{ include('AppBundle:Pratiche/summary/parts:download_allegato.html.twig', {'pratica':pratica, 'user': user, 'allegato': allegato}) }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'steps.cambio_residenza.informazioni_accertamento.title'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">
+            {{ pratica.infoAccertamento }}
+        </div>
+    </div>
+
+</div>

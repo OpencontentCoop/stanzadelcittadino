@@ -1,0 +1,104 @@
+<html>
+<head>
+    {{ include('AppBundle:Pratiche/pdf/parts:style.html.twig', {'pratica':pratica, 'user': user}) }}
+</head>
+<body>
+
+{{ include('AppBundle:Pratiche/pdf/parts:base.html.twig', {'pratica':pratica, 'user': user}) }}
+
+<div class="chiede center_title">
+    {{ 'pratica.pdf.chiede'|trans() }}
+</div>
+
+<div class="richiesta">
+    <p>{{ 'allacciamento_acquedotto.pdf.chiede'|trans }}</p>
+</div>
+
+<div class="richiesta">
+
+    <p><strong>{{ 'steps.allacciamento_acquedotto.dati_intervento.title'|trans }}</strong></p>
+    <table class="table page-break-after">
+        <tr>
+            <td>{{ 'steps.allacciamento_acquedotto.dati_intervento.tipo_intervento'|trans }}</td>
+            <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoTipoIntervento }}</span></td>
+            <td>{{ 'steps.allacciamento_acquedotto.dati_intervento.tipo_allaccio'|trans }}</td>
+            <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoTipoAllaccio }}</span></td>
+        </tr>
+        <tr>
+            <td>{{ 'steps.allacciamento_acquedotto.dati_intervento.tipo_uso'|trans }}</td>
+            <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoTipoUso }}</span></td>
+            <td>{{ 'steps.allacciamento_acquedotto.dati_intervento.diametro_rete_interna'|trans }}</td>
+            <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoDiametroReteInterna }}</span></td>
+        </tr>
+    </table>
+
+    <p><strong>{{ 'steps.allacciamento_acquedotto.dati_immobile.title'|trans }}</strong></p>
+    <table class="table">
+        <tr>
+            <td>{{ 'steps.allacciamento_acquedotto.dati_immobile.qualifica'|trans }}</td>
+            <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoImmobileQualifica }}</span></td>
+            <td colspan="2"></td>
+        </tr>
+        <tr>
+            <td>{{ 'steps.allacciamento_acquedotto.dati_immobile.provincia'|trans }}</td>
+            <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoImmobileProvincia }}</span></td>
+            <td>{{ 'steps.allacciamento_acquedotto.dati_immobile.comune'|trans }}</td>
+            <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoImmobileComune }}</span></td>
+        </tr>
+        <tr>
+            <td>{{ 'steps.allacciamento_acquedotto.dati_immobile.indirizzo'|trans }}</td>
+            <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoImmobileIndirizzo }}</span></td>
+            <td>{{ 'steps.allacciamento_acquedotto.dati_immobile.numero_civico'|trans }}</td>
+            <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoImmobileNumeroCivico }}</span></td>
+        </tr>
+        <tr>
+            <td>{{ 'steps.allacciamento_acquedotto.dati_immobile.scala'|trans }}</td>
+            <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoImmobileScala }}</span></td>
+            <td>{{ 'steps.allacciamento_acquedotto.dati_immobile.piano'|trans }}</td>
+            <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoImmobilePiano }}</span></td>
+        </tr>
+        <tr>
+            <td>{{ 'steps.allacciamento_acquedotto.dati_immobile.catasto_categoria'|trans }}</td>
+            <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoImmobileCatastoCategoria }}</span></td>
+            <td>{{ 'steps.allacciamento_acquedotto.dati_immobile.catasto_codice_comune'|trans }}</td>
+            <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoImmobileCatastoCodiceComune }}</span></td>
+        </tr>
+        <tr>
+            <td>{{ 'steps.allacciamento_acquedotto.dati_immobile.catasto_foglio'|trans }}</td>
+            <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoImmobileCatastoFoglio }}</span></td>
+            <td>{{ 'steps.allacciamento_acquedotto.dati_immobile.catasto_sezione'|trans }}</td>
+            <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoImmobileCatastoSezione }}</span></td>
+        </tr>
+        <tr>
+            <td>{{ 'steps.allacciamento_acquedotto.dati_immobile.catasto_mappale'|trans }}</td>
+            <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoImmobileCatastoMappale }}</span></td>
+            <td colspan="2"></td>
+        </tr>
+    </table>
+
+    {% if pratica.allacciamentoAcquedottoUseAlternateContact %}
+        <p><strong>{{ 'steps.allacciamento_acquedotto.dati_contatto.title'|trans }}</strong></p>
+        <table class="table">
+            <tr>
+                <td>{{ 'steps.allacciamento_acquedotto.dati_contatto.indirizzo'|trans }}</td>
+                <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoAlternateContactVia }}</span></td>
+                <td>{{ 'steps.allacciamento_acquedotto.dati_contatto.numero_civico'|trans }}</td>
+                <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoAlternateContactCivico }}</span></td>
+            </tr>
+            <tr>
+                <td>{{ 'steps.allacciamento_acquedotto.dati_contatto.cap'|trans }}</td>
+                <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoAlternateContactCAP }}</span></td>
+                <td>{{ 'steps.allacciamento_acquedotto.dati_contatto.comune'|trans }}</td>
+                <td><span class="text-uppercase">{{ pratica.allacciamentoAcquedottoAlternateContactComune }}</span></td>
+            </tr>
+        </table>
+    {% endif %}
+
+</div>
+
+
+{{ include('AppBundle:Pratiche/pdf/parts:data_luogo.html.twig', {'pratica':pratica, 'user': user}) }}
+
+{{ include('AppBundle:Pratiche/pdf/parts:dati_autenticazione.html.twig', {'user': user}) }}
+</body>
+</html>

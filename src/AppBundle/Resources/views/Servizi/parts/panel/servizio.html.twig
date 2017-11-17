@@ -1,0 +1,26 @@
+{% set text_limit = 100 %}
+{% if route is not defined %}
+    {% set route = 'esplora_servizi_show' %}
+{% endif %}
+<article class="panel panel-default servizio">
+    <div class="panel-body">
+        {%  if servizio.area %}
+            <small><i class="fa fa-circle"></i> {{ servizio.area.name }}</small>
+        {% endif %}
+        <h4><a href="{{ path('servizi_show', {'slug': servizio.slug}) }}">{{ servizio.name }}</a></h4>
+        <p>{{ servizio.description|length > text_limit ? servizio.description|slice(0, text_limit) ~ '...' : servizio.description  }}</p>
+
+        {% if servizio.enti|length > 0 %}
+            <p><small><b>{{ 'servizio.attivo_per'|trans }}</b></small>
+            {% for ente in servizio.enti %}<a href="{{ ente.siteUrl }}"><small>{{ ente.name }} </small></a>{% endfor %}
+            </p>
+        {% endif %}
+
+        <div class="text-center">
+            <a class="btn btn-default" href="{{ path('servizi_show', {'slug': servizio.slug}) }}">
+              <i class="fa fa-arrow-circle-o-right"></i>
+              {{ "servizio.vai"|trans()  }}
+            </a>
+        </div>
+    </div>
+</article>

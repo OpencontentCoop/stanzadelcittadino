@@ -1,0 +1,32 @@
+<html>
+<head>
+    {{ include('AppBundle:Pratiche/pdf/parts:style.html.twig', {'pratica':pratica, 'user': user}) }}
+</head>
+<body>
+
+
+<div class="chiede center_title">
+    <span class="text-uppercase">Spettabile {{ pratica.richiedenteCognome }} {{ pratica.richiedenteNome }}</span>
+</div>
+
+<div class="richiesta">
+    <p>
+        La informiamo che la Sua richiesta è stata: <b>{% if pratica.esito %}accettata{% else %}rifiutata{% endif %}</b>
+    </p>
+    {% if pratica.motivazioneEsito is not empty %}
+        <p>{{ pratica.motivazioneEsito }}</p>
+    {% endif %}
+    {% if pratica.allegatiOperatore|length > 0 %}
+        <h2>Allegati alla risposta:</h2>
+        <ul>
+        {% for allegato in pratica.allegatiOperatore %}
+            <li>{{ allegato.filename }} &dash; {{ allegato.description }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+
+{{ include('AppBundle:Pratiche/pdf/parts:data_luogo.html.twig', {'pratica':pratica, 'user': user}) }}
+
+</body>
+</html>

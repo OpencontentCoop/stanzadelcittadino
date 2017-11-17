@@ -1,0 +1,11 @@
+<div class="pane-inner alphabetical">
+    <h1 tabindex="-1" class="hidden-xs">{{ current_topic.Name }}</h1>
+    <p class="sort-order"><i class="fa fa-sort-alpha-asc" aria-hidden="true"></i></p>
+    <ul>
+        {% for subtopic in sub_topics %}
+            <li {% if subtopic == current_subtopic %}class="active"{% endif %}>
+                <a href="{{ path('servizi_miller_ajax', {'topic': current_topic.slug, 'subtopic': subtopic.slug}) }}">{{ subtopic.Name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

@@ -1,0 +1,44 @@
+{% if pratica.statusName != 'STATUS_DRAFT' %}
+<div class="row">
+    <div class="col-xs-12 col-sm-3"><strong>{{ 'pratica.protocollo'|trans }}</strong></div>
+    <div class="col-xs-12 col-sm-9">
+        {% if pratica.numeroProtocollo %}
+            {{ pratica.numeroProtocollo }}
+        {% else %}
+            <em>{{ 'pratica.in_attesa_protocollo'|trans }}</em>
+        {% endif %}
+
+        {{ include('AppBundle:Pratiche/summary/parts:moduli_compilati.html.twig', {'pratica':pratica, 'user': user}) }}
+
+        {{ include('AppBundle:Pratiche/summary/parts:risposta_operatore.html.twig', {'pratica':pratica, 'user': user}) }}
+
+    </div>
+</div>
+{% endif %}
+
+{% if pratica.statusName != 'STATUS_DRAFT' %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'pratica.dettaglio.data_ora_presentazione'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9"> {{ pratica.creationTime|date(ocsdc_default_date_format) }} {{ 'pratica.dettaglio.alle'|trans }} {{ pratica.creationTime|date(ocsdc_default_time_format) }} </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'pratica.dettaglio.stato'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9"> {{ pratica.statusName|trans }}</div>
+    </div>
+{% endif %}
+
+{% if pratica.servizio != null %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'pratica.dettaglio.servizio'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">{{ pratica.servizio.name }}</div>
+    </div>
+{% endif %}
+
+{% if pratica.ente != null %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'pratica.dettaglio.ente'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9"> {{ pratica.ente.name }}</div>
+    </div>
+{% endif %}
+
+{{ include('AppBundle:Pratiche/summary/parts:richiedente.html.twig', {'pratica':pratica, 'user': user}) }}

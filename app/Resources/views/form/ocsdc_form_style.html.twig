@@ -1,0 +1,20 @@
+{% extends 'bootstrap_3_layout.html.twig' %}
+
+{%- block checkbox_widget -%}
+    {# TODO: spostare questo stile inline nel sass #}
+    <div class="checkboxwrapper" style="border: solid 5px #e74e26; border-radius: 10px; padding:10px">
+        {{ parent() }}
+    </div>
+{%- endblock checkbox_widget -%}
+
+{% block form_errors -%}
+    {% if errors|length > 0 -%}
+    {% if form.parent %}<span class="help-block">{% else %}<div class="alert alert-danger">{% endif %}
+    <ul class="list-unstyled">
+        {%- for error in errors -%}
+            <li><span class="fa fa-warning"></span> {{ error.message }}</li>
+        {%- endfor -%}
+    </ul>
+    {% if form.parent %}</span>{% else %}</div>{% endif %}
+    {%- endif %}
+{%- endblock form_errors %}

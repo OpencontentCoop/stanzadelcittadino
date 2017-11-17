@@ -1,0 +1,35 @@
+<div class="chiede center_title">
+    {{ 'pratica.pdf.dichiara'|trans() }}
+</div>
+
+<ol>
+    {%  if pratica.nucleoFamiliare|length > 0 %}
+        <li class="nucleo_familiare dichiarazione">
+            <p>{{ 'pratica.pdf.dichiarazione_composizione_nucleo_familiare'|trans()|raw }}</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>{{ 'pratica.pdf.composizione_nucleo_familiare.nome_e_cognome'|trans() }}</th>
+                        <th>{{ 'pratica.pdf.composizione_nucleo_familiare.rapporto_parentela'|trans() }}</th>
+                        <th>{{ 'pratica.pdf.composizione_nucleo_familiare.codice_fiscale'|trans() }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for componente in pratica.nucleoFamiliare %}
+                        <tr>
+                            <td>{{ componente.nome }} {{ componente.cognome }}</td>
+                            <td>{{ componente.rapportoParentela }}</td>
+                            <td>{{ componente.codiceFiscale }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </li>
+    {% endif %}
+
+    <li class="dichiarazione">
+        <p>{{ 'pratica.pdf.dichiarazione_cambiamenti'|trans({'%comune%': pratica.ente.name}) }}</p>
+        <small>{{ 'pratica.pdf.dichiarazione_cambiamenti_detail'|trans()|raw }}</small>
+    </li>
+</ol>
+

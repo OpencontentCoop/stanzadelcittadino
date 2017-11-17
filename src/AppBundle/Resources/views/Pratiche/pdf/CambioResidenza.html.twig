@@ -1,0 +1,212 @@
+{% set oggetto = ('cambio_residenza.provenienza.' ~ pratica.provenienza)|trans() %}
+{% if pratica.provenienza == 'altro_comune' %}
+    {% set oggetto = oggetto ~ 'cambio_residenza.pdf.comune'|trans() ~ pratica.comuneDiProvenienza %}
+{% elseif pratica.provenienza == 'estero' %}
+    {% set oggetto = oggetto ~ 'cambio_residenza.pdf.stato'|trans() ~ pratica.statoEsteroDiProvenienza %}
+{% elseif pratica.provenienza == 'aire' %}
+    {% set oggetto = oggetto ~ 'cambio_residenza.pdf.stato'|trans() ~ pratica.statoEsteroDiProvenienza ~ 'cambio_residenza.pdf.comune'|trans() ~ pratica.comuneEsteroDiProvenienza %}
+{% elseif pratica.provenienza == 'altro' %}
+    {% set oggetto = oggetto ~ " - " ~ pratica.altraProvenienza %}
+{% endif %}
+
+<html>
+<head>
+    {{ include('AppBundle:Pratiche/pdf/parts:style.html.twig', {'pratica':pratica, 'user': user}) }}
+</head>
+<body>
+
+{{ include('AppBundle:Pratiche/pdf/parts:base.html.twig', {'pratica':pratica, 'user': user}) }}
+
+<p>
+    <strong>{{ 'cambio_residenza.pdf.rischi'|trans() }}</strong>
+</p>
+
+<div class="chiede center_title">
+    {{ 'pratica.pdf.dichiara'|trans() }}
+</div>
+
+<ol>
+    <li class="cambio_residenza dichiarazione page-break-after">
+        <p>{{ 'cambio_residenza.pdf.trasferimento'|trans() }}</p>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td colspan="2">{{ 'steps.cambio_residenza.dati_residenza.comune'|trans }} <span class="text-uppercase">{{ pratica.residenzaComune }}</span></td>
+                    <td colspan="2">{{ 'steps.cambio_residenza.dati_residenza.provincia'|trans }} <span class="text-uppercase">{{ pratica.residenzaProvincia }}</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2">{{ 'steps.cambio_residenza.dati_residenza.indirizzo'|trans }} <span class="text-uppercase">{{ pratica.residenzaIndirizzo }}</span></td>
+                    <td colspan="2">{{ 'steps.cambio_residenza.dati_residenza.numero_civico'|trans }} <span class="text-uppercase"> {{ pratica.residenzaNumeroCivico }}</span></td>
+                </tr>
+                <tr>
+                    <td>{{ 'steps.cambio_residenza.dati_residenza.scala'|trans }} <span class="text-uppercase">{{ pratica.residenzaScala }}</span></td>
+                    <td>{{ 'steps.cambio_residenza.dati_residenza.piano'|trans }} <span class="text-uppercase">{{ pratica.residenzaPiano }}</span></td>
+                    <td colspan="2">{{ 'steps.cambio_residenza.dati_residenza.interno'|trans }} <span class="text-uppercase">{{ pratica.residenzaInterno }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </li>
+
+    {%  if pratica.nucleoFamiliare|length > 0 %}
+        <li class="nucleo_familiare dichiarazione">
+            <p>{{ 'cambio_residenza.pdf.familiari'|trans() }}</p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>{{ 'pratica.dettaglio.componente_nucleo_familiare.cognome'|trans }}</th>
+                    <th>{{ 'pratica.dettaglio.componente_nucleo_familiare.nome'|trans }}</th>
+                    <th>{{ 'pratica.dettaglio.componente_nucleo_familiare.codice_fiscale'|trans }}</th>
+                    <th>{{ 'pratica.dettaglio.componente_nucleo_familiare.rapporto_di_parentela'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for componente in pratica.nucleoFamiliare %}
+                    <tr>
+                        <td>{{ componente.cognome }} </td>
+                        <td>{{ componente.nome }}</td>
+                        <td>{{ componente.codiceFiscale }}</td>
+                        <td>{{ componente.rapportoParentela }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </li>
+    {% endif %}
+
+    {%  if pratica.personeResidenti|length > 0 %}
+        <li class="nucleo_familiare dichiarazione">
+            <p>{{ 'cambio_residenza.pdf.iscritti'|trans() }}</p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>{{ 'pratica.dettaglio.componente_nucleo_familiare.cognome'|trans }}</th>
+                    <th>{{ 'pratica.dettaglio.componente_nucleo_familiare.nome'|trans }}</th>
+                    <th>{{ 'pratica.dettaglio.componente_nucleo_familiare.codice_fiscale'|trans }}</th>
+                    <th>{{ 'pratica.dettaglio.componente_nucleo_familiare.rapporto_di_parentela'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for componente in pratica.personeResidenti %}
+                    <tr>
+                        <td>{{ componente.cognome }} </td>
+                        <td>{{ componente.nome }}</td>
+                        <td>{{ componente.codiceFiscale }}</td>
+                        <td>{{ componente.rapportoParentela }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </li>
+    {% endif %}
+
+    <li>
+        {% if pratica.tipoOccupazione == 'proprietario' %}
+            <p>{{ 'cambio_residenza.pdf.occupazione.proprietario'|trans }}</p>
+            <table class="table">
+                <tr>
+                    <th>{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.proprietario.catasto_sezione'|trans }}</th>
+                    <th>{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.proprietario.catasto_foglio'|trans }}</th>
+                    <th>{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.proprietario.catasto_particella'|trans }}</th>
+                    <th>{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.proprietario.catasto_subalterno'|trans }}</th>
+                </tr>
+                <tr>
+                    <td>{{ pratica.proprietarioCatastoSezione }}</td>
+                    <td>{{ pratica.proprietarioCatastoFoglio }}</td>
+                    <td>{{ pratica.proprietarioCatastoParticella }}</td>
+                    <td>{{ pratica.proprietarioCatastoSubalterno }}</td>
+                </tr>
+            </table>
+
+        {% elseif pratica.tipoOccupazione == 'locazione' %}
+            <p>{{ 'cambio_residenza.pdf.occupazione.locazione'|trans }}</p>
+            <table class="table">
+                <tr>
+                    <th>{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.contratto.agenzia'|trans }}</th>
+                    <th>{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.contratto.numero'|trans }}</th>
+                    <th>{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.contratto.data'|trans }}</th>
+                </tr>
+                <tr>
+                    <td>{{ pratica.contrattoAgenzia }}</td>
+                    <td>{{ pratica.contrattoNumero }}</td>
+                    <td>{{ pratica.contrattoData|date(ocsdc_default_date_format) }}</td>
+                </tr>
+            </table>
+        {% elseif pratica.tipoOccupazione == 'locazione_erp' %}
+            <p>{{ 'cambio_residenza.pdf.occupazione.locazione_erp'|trans }}</p>
+            {% if pratica.allegati|length > 0 %}
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>{{ 'pratica.dettaglio.allegato.file'|trans }}</th>
+                        <th>{{ 'pratica.dettaglio.allegato.descrizione'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for allegato in pratica.allegati %}
+                        <tr>
+                            <td>{{ allegato.originalFilename }}</td>
+                            <td>{{ allegato.description }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        {% elseif pratica.tipoOccupazione == 'comodato' %}
+            <p>{{ 'cambio_residenza.pdf.occupazione.comodato'|trans }}</p>
+            <table class="table">
+                <tr>
+                    <th>{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.contratto.agenzia'|trans }}</th>
+                    <th>{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.contratto.numero'|trans }}</th>
+                    <th>{{ 'steps.cambio_residenza.tipologia_occupazione_dettaglio.contratto.data'|trans }}</th>
+
+                </tr>
+                <tr>
+                    <td>{{ pratica.contrattoAgenzia }}</td>
+                    <td>{{ pratica.contrattoNumero }}</td>
+                    <td>{{ pratica.contrattoData|date(ocsdc_default_date_format) }}</td>
+                </tr>
+            </table>
+
+        {% elseif pratica.tipoOccupazione == 'usufruttuario' %}
+            <p>{{ 'cambio_residenza.pdf.occupazione.usufruttuario'|trans }}</p>
+            <em>{{ pratica.usufruttuarioInfo }}</em>
+
+        {% elseif pratica.tipoOccupazione == 'autocertificazione' %}
+            <p>{{ 'cambio_residenza.pdf.occupazione.autocertificazione'|trans }}</p>
+            {% if pratica.allegati|length > 0 %}
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>{{ 'pratica.dettaglio.allegato.file'|trans }}</th>
+                        <th>{{ 'pratica.dettaglio.allegato.descrizione'|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for allegato in pratica.allegati %}
+                        <tr>
+                            <td>{{ allegato.originalFilename }}</td>
+                            <td>{{ allegato.description }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        {% endif %}
+    </li>
+
+    {% if pratica.infoAccertamento %}
+        <li>
+            <p>{{ 'cambio_residenza.pdf.accertamento_dati'|trans }}</p>
+            <em>{{ pratica.infoAccertamento }}</em>
+        </li>
+    {% endif %}
+</ol>
+
+
+
+
+{{ include('AppBundle:Pratiche/pdf/parts:data_luogo.html.twig', {'pratica':pratica, 'user': user}) }}
+
+{{ include('AppBundle:Pratiche/pdf/parts:dati_autenticazione.html.twig', {'user': user}) }}
+</body>
+</html>

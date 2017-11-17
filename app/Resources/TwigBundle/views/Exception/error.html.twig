@@ -1,0 +1,7 @@
+{% extends '@App/Default/index.html.twig' %}
+{% block main_content %}
+    <h2>{{ 'error_message'|trans }}</h2>
+    <div class="alert alert-danger">
+        <p>{{ 'error_message_detail'|trans }}</p>
+    </div>
+{% endblock %}

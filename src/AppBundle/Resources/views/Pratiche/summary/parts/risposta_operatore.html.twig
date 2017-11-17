@@ -1,0 +1,9 @@
+{% set download_allegato_path = user.id == pratica.user.id ? 'allegati_download_cpsuser' : 'risposta_download_operatore' %}
+{% if pratica.statusName == 'STATUS_COMPLETE' or pratica.statusName == 'STATUS_CANCELLED' %}
+    {% if pratica.rispostaOperatore %}
+        <p class="modulo">
+            <a href="{{ path(download_allegato_path, {'allegato': pratica.rispostaOperatore.id}) }}">
+                {{ 'operatori.scarica_risposta_firmata'|trans }}</a>
+        </p>
+    {% endif %}
+{% endif %}

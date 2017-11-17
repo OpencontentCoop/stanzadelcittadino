@@ -1,0 +1,87 @@
+{% extends '@App/Default/index.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/miller.css') }}"/>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/app/js/miller.js') }}"></script>
+{% endblock %}
+
+{% block main_content %}
+
+    {% if current_topic and current_subtopic %}
+        {% set class_panes = 'browse-panes subsection' %}
+        {% set state_panes = 'subsection' %}
+    {% elseif current_topic and sub_topics|length > 0 %}
+        {% set class_panes = 'browse-panes section' %}
+        {% set state_panes = 'section' %}
+    {% else %}
+        {% set class_panes = 'browse-panes root section' %}
+        {% set state_panes = '' %}
+    {% endif %}
+
+    <div class="row">
+        <div class="col-sm-9">
+            <h1>{{ 'esplora_i_servizi'|trans() }}</h1>
+        </div>
+        <div class="col-md-3 hidden-xs text-right">
+            <p class="welcome">
+                <a href="{{ path('servizi_list') }}" class="btn btn-sm btn-info">
+                    <i class="fa fa-th" aria-hidden="true"></i> {{ 'visualizza_griglia'|trans }}
+                </a>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary">Seleziona Area <small>( {{ current_area.name }} )</small></button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                    {% for a in areas %}
+                        <li {% if a == current_area %}class="active"{% endif %}>
+                            <a href="{{ path('servizi_miller', {'area': a.slug}) }}">{{ a.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="wrapper">
+        <main id="content" role="main" class="browse">
+            <div class="{{ class_panes }}" data-state="{{ state_panes }}">
+
+                {% if current_subtopic %}
+                    <div id="subsection" class="pane with-sort" style="">
+                        {{ include('@App/Servizi/parts/miller/subsection.html.twig') }}
+                    </div>
+                {% endif %}
+
+                <div id="section" class="pane {% if current_subtopic == false %}with-sort{% endif %}">
+                    {% if current_topic %}
+                        {{ include('@App/Servizi/parts/miller/section.html.twig') }}
+                    {% endif %}
+                </div>
+
+                <div id="root" class="pane">
+                    <h1 class="visuallyhidden" tabindex="-1" class="hidden-xs">{{ current_area.name }}</h1>
+                    <ul>
+                        {% for topic in topics %}
+                            <li {% if topic == current_topic %}class="active"{% endif %}>
+                                <a href="{{ path('servizi_miller_ajax', {'topic': topic.slug}) }}">{{ topic.Name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+{% endblock %}

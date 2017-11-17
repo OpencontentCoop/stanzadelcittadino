@@ -1,0 +1,66 @@
+<header id="header">
+    <div id="header-top" class="container-fluid clearfix">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-2 col-xs-4 col-xs-offset-2">
+                <div id="header-top-left" class="clearfix hidden-xs">
+                   <a href="{{ header_top.link }}">{{ header_top.title }}</a>
+                </div>
+            </div>
+            {% if user is defined %}
+                <div class="col-md-6">
+                    {{ include('@App/Default/parts/user_badge.html.twig', {'user': user}) }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div id="header-inside" class="container-fluid clearfix">
+        <div class="row">
+            <div class="col-xs-2 col-sm-1 hidden-md hidden-lg burger-wrapper-container">
+                <h2 class="sr-only">Menu principale</h2>
+                <div class="burger-wrapper">
+                    <div class="burger-container">
+                        <!--<button id="showLeftPush">Show/Hide Left Push Menu</button>-->
+                        <a class="toggle-menu" data-toggle="offcanvas" data-target=".navmenu" data-canvas="body">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1 hidden-xs">
+                <div id="logo">
+                    <a href="{{ path('home') }}" title="Home" rel="home">
+                        <img class="img-responsive pull-right" src="{{ asset('bundles/app/images/logo-stanza.png') }}" alt="{{ 'title'|trans }}" />
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-10">
+                <div id="site-name">
+                    <a class="hidden-xs" href="http://www.comunetreville.tn.it/" target="_blank">
+                        <img class="img-responsive pull-right" src="{{ asset('bundles/app/images/logo-ente.png') }}" alt="{{ 'title'|trans }}" />
+                    </a>
+                    <h1 style="margin-bottom: 0">
+                        <a href="{{ path('home') }}" title="Home" style="color: #000">
+                            {{ 'title'|trans }}
+                        </a>
+                    </h1>
+                    <p class="hidden-xs">{{ 'claim'|trans }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="nav-aree" class="container-fluid clearfix hidden-sm hidden-xs">
+        <div class="row">
+            <div class="no-pad-b">
+                <h2 class="sr-only">Sezioni principali</h2>
+                <ul class="nav nav-pills">
+                    {{ include('@App/Default/parts/menu_list.html.twig') }}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</header>

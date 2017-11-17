@@ -1,0 +1,17 @@
+<table style="font-size: 8pt;table-layout: fixed;">
+    <tr>
+        <td colspan="2">{{ 'pratica.pdf.dati_autenticazione'|trans }}</td>
+    </tr>
+    <tr>
+        <td>x509certificate_issuerdn</td>
+        <td>{{ user.x509certificateIssuerdn }}</td>
+    </tr>
+    <tr>
+        <td>x509certificate_subjectdn</td>
+        <td>{{ user.x509certificateSubjectdn }}</td>
+    </tr>
+    <tr>
+        <td>x509certificate_base64</td>
+        <td style="word-break: break-word;overflow-wrap: break-word;"><small>{{ user.x509certificateBase64 }}</small></td>
+    </tr>
+</table>

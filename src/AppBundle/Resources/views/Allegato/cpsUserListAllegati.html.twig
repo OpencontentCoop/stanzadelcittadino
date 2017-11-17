@@ -1,0 +1,62 @@
+{% extends '@App/Default/index.html.twig' %}
+
+{% block main_content %}
+    <div class="col-sm-12">
+        <a class="btn btn-default" href="{{ path('allegati_create_cpsuser') }}">{{ 'allegato.aggiungi'|trans }}</a>
+    </div>
+    
+    {% for item in allegati %}
+
+        {% if loop.index % 3 == 1 %}
+        <div class="row list">
+        {% endif %}
+
+        <div class="col-sm-4" data-allegato="{{ item.allegato.id }}">
+            <article class="panel panel-default servizio">
+            <div class="panel-body">
+            <div data-title="{{ 'pratica.dettaglio.allegato.file'|trans }}">
+                <strong>{{ 'pratica.dettaglio.allegato.file'|trans }}</strong>
+                {{ item.allegato.originalFilename }}
+            </div>
+            <div data-title="{{ 'pratica.dettaglio.allegato.descrizione'|trans }}">
+                <strong>{{ 'pratica.dettaglio.allegato.descrizione'|trans }}</strong>
+                {{ item.allegato.description }}
+            </div>
+
+            {%  if item.allegato.pratiche | length > 0 %}
+                <strong>{{ 'pratica.dettaglio.allegato.pratiche_list_intro'|trans }}</strong>
+                <ul class="list-unstyled">
+                    {% for pratica in item.allegato.pratiche %}
+                        <li>
+                            <a href="{{ path('pratiche_show', {'pratica': pratica}) }}">
+                                <small>{{ pratica.servizio.name }}
+                                    ({{ pratica.statusName|trans }}
+                                    {% if pratica.statusName == 'STATUS_SUBMITTED' %}{{ pratica.submissionTime|date(ocsdc_default_date_format) }}{% else %}{{ pratica.creationTime|date(ocsdc_default_date_format) }}{% endif %})
+                                </small>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <div data-title="" class="pull-left">
+                <a href="{{ path( 'allegati_download_cpsuser', {'allegato': item.allegato.id}) }}"
+                   class="btn btn-xs btn-info">{{ 'allegato.scarica_allegato'|trans }}</a>
+            </div>
+            {% if item.deleteform %}
+                <div data-title="" class="pull-right">
+                    {{ form(item.deleteform) }}
+                </div>
+            {% endif %}
+            </div>
+            </article>
+        </div>
+
+        {% if (loop.index % 3 == 0 or loop.last) %}
+            </div>
+        {% endif %}
+
+    {% endfor %}
+
+{% endblock %}
+

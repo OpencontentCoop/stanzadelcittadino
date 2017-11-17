@@ -1,0 +1,4 @@
+suites:
+  default:
+    src_path: src
+    spec_path: tests/

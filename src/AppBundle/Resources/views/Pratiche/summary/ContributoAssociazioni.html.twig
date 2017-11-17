@@ -1,0 +1,94 @@
+<div id="pratica-summary">
+
+    {{ include('AppBundle:Pratiche/summary/parts:base.html.twig', {'pratica':pratica, 'user': user}) }}
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'steps.common.org_richiedente.title'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">
+            <table class="table table-bordered table-striped table-condensed cf">
+                <tr>
+                    <th width="1">{{ 'steps.common.org_richiedente.ruolo_utente'|trans }}</th>
+                    <td>{{ pratica.getRuoloUtenteOrgRichiedente }}</td>
+                </tr>
+                <tr>
+                    <th width="1">{{ 'steps.common.org_richiedente.ragione_sociale'|trans }}</th>
+                    <td>{{ pratica.ragioneSocialeOrgRichiedente }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'steps.common.org_richiedente.cf'|trans }}</th>
+                    <td>{{ pratica.cfOrgRichiedente }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'steps.common.org_richiedente.piva'|trans }}</th>
+                    <td>{{ pratica.pivaOrgRichiedente }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'steps.common.org_richiedente.indirizzo'|trans }}</th>
+                    <td>{{ pratica.indirizzoOrgRichiedente }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'steps.common.org_richiedente.civico'|trans }}</th>
+                    <td>{{ pratica.civicoOrgRichiedente }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'steps.common.org_richiedente.cap'|trans }}</th>
+                    <td>{{ pratica.capOrgRichiedente }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'steps.common.org_richiedente.comune'|trans }}</th>
+                    <td>{{ pratica.comuneOrgRichiedente }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'steps.common.org_richiedente.provincia'|trans }}</th>
+                    <td>{{ pratica.provinciaOrgRichiedente }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'steps.common.org_richiedente.email'|trans }}</th>
+                    <td>{{ pratica.emailOrgRichiedente }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'steps.common.org_richiedente.tel'|trans }}</th>
+                    <td>{{ pratica.telOrgRichiedente }}</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'steps.contributo_associazioni.tipologia_attivita.title'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">
+            <table class="table table-bordered table-striped table-condensed cf">
+                <tr>
+                    <th width="1">{{ 'steps.contributo_associazioni.tipologia_attivita.tipologia'|trans }}</th>
+                    <td>{{ ('steps.contributo_associazioni.tipologia_attivita.' ~ pratica.tipologiaAttivita)|trans }}</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-3"><strong>{{ 'steps.contributo_associazioni.contributo.title'|trans }}</strong></div>
+        <div class="col-xs-12 col-sm-9">
+            <table class="table table-bordered table-striped table-condensed cf">
+                <tr>
+                    <th width="1">{{ 'steps.contributo_associazioni.contributo.tipologia_contributo'|trans }}</th>
+                    <td>{{ ('steps.contributo_associazioni.contributo.' ~ pratica.usoContributo)|trans }}</td>
+                </tr>
+                <tr>
+                    <th width="1">{{ 'steps.contributo_associazioni.contributo.descrizione'|trans }}</th>
+                    <td>{{ pratica.descrizioneContributo }}</td>
+                </tr>
+                <tr>
+                    <th>{{ 'steps.contributo_associazioni.contributo.anno'|trans }}</th>
+                    <td>{{ pratica.annoAttivita }}</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+    {{ include('AppBundle:Pratiche/summary/parts:conto_corrente.html.twig', {'pratica':pratica, 'user': user}) }}
+    
+</div>

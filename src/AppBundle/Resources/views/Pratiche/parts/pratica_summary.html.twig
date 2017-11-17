@@ -1,0 +1,3 @@
+{%  set fcqn_parts = pratica.servizio.praticaFCQN | split('\\') %}
+{% set class_name = fcqn_parts|last %}
+{{ include('AppBundle:Pratiche/summary:' ~ class_name ~ '.html.twig', {'pratica':pratica, 'user': user}) }}

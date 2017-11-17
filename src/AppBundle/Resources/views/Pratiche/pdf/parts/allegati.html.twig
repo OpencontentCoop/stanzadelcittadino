@@ -1,0 +1,22 @@
+{% if pratica.allegati|length > 0 %}
+    <div class="chiede center_title">
+        {{ 'pratica.pdf.allega'|trans() }}
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>{{ 'pratica.dettaglio.allegato.file'|trans }}</th>
+            <th>{{ 'pratica.dettaglio.allegato.descrizione'|trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for allegato in pratica.allegati %}
+            <tr>
+                <td>{{ allegato.originalFilename }}</td>
+                <td>{{ allegato.description }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}

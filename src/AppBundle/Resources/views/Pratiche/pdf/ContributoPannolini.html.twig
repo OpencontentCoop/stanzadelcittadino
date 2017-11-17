@@ -1,0 +1,48 @@
+<html>
+<head>
+    {{ include('AppBundle:Pratiche/pdf/parts:style.html.twig', {'pratica':pratica, 'user': user}) }}
+</head>
+<body>
+
+{{ include('AppBundle:Pratiche/pdf/parts:base.html.twig', {'pratica':pratica, 'user': user}) }}
+
+<div class="chiede center_title">
+    {{ 'pratica.pdf.chiede'|trans() }}
+</div>
+
+<div class="richiesta">
+    <p>
+        {{ 'contributo_pannolini.pdf.rimborso'| trans }} <span class="text-uppercase">{{ ('contributo_pannolini.dettaglio.tipo_pannolino.'~pratica.tipoPannolini)|trans() }}</span>
+        {{ 'contributo_pannolini.pdf.per_il_bambino'|trans() }} <span class="text-uppercase">{{ pratica.bambinoNome }} {{ pratica.bambinoCognome }}</span>.
+        <br/>{{ 'contributo_pannolini.pdf.che_venga_rimborsato'|trans() }}
+        {{ pratica.iban }} {{ 'contributo_pannolini.pdf.intestato_a'|trans }} <span class="text-uppercase">{{ pratica.intestatarioConto }}</span>.
+    </p>
+
+    <div class="chiede center_title">
+        {{ 'contributo_pannolini.dettaglio.acquisto'|trans }}
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ 'contributo_pannolini.dettaglio.tipo_pannolini'|trans }}</th>
+                <th>{{ 'contributo_pannolini.dettaglio.nome_punto_vendita'|trans }}</th>
+                <th>{{ 'contributo_pannolini.dettaglio.data_acquisto'|trans }}</th>
+                <th>{{ 'contributo_pannolini.dettaglio.totale_spesa'|trans }}</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>{{ ('contributo_pannolini.dettaglio.tipo_pannolino.'~pratica.tipoPannolini)|trans() }}</td>
+            <td>{{ pratica.nomePuntoVendita }}</td>
+            <td>{{ pratica.dataAcquisto|date(ocsdc_default_date_format) }}</td>
+            <td>{{ pratica.totaleSpesa|number_format(2, ',') }}</td>
+        </tr>
+    </table>
+</div>
+
+{{ include('AppBundle:Pratiche/pdf/parts:allegati.html.twig', {'pratica':pratica, 'user': user}) }}
+
+{{ include('AppBundle:Pratiche/pdf/parts:data_luogo.html.twig', {'pratica':pratica, 'user': user}) }}
+
+{{ include('AppBundle:Pratiche/pdf/parts:dati_autenticazione.html.twig', {'user': user}) }}
+</body>
+</html>

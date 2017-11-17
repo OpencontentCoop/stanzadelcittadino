@@ -1,0 +1,18 @@
+{% set download_allegato_path = user.id == pratica.user.id ? 'allegati_download_cpsuser' : 'allegati_download_operatore' %}
+{% if pratica.statusName == 'STATUS_COMPLETE' %}
+    <div class="row last">
+        <div class="col-xs-12 col-sm-9 col-sm-offset-3">
+            {% if pratica.allegatiOperatore|length > 0 %}
+                <div id="no-more-tables">
+                    <h5>{{ 'pratica.dettaglio.modulocompilato'|trans }}</h5>
+                    {% for allegato in pratica.allegatiOperatore %}
+                        <p class="modulo">
+                            <span>{{ allegato.description }}</span>
+                            <a href="{{ path(download_allegato_path, {'allegato': allegato.id}) }}" class="btn btn-success btn-block btn-lg">{{ 'operatori.scarica'|trans }}</a>
+                        </p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

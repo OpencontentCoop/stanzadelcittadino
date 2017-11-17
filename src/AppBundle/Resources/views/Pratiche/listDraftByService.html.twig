@@ -1,0 +1,21 @@
+{% extends '@App/Default/index.html.twig' %}
+
+{% block main_content %}
+
+    <h2>{{ 'lista_pratiche_bozza'|trans() }}</h2>
+
+    <div class="row">
+        {% for pratica in pratiche %}
+            <div class="col-sm-4">
+                {{ include('@App/Pratiche/parts/panel/pratica.html.twig') }}
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if ente is defined and servizio is defined %}
+        <a href="{{ path('pratiche_accedi', {'servizio': servizio.slug, 'ente': ente.slug, 'id': 'new'}) }}">
+            Crea nuovo
+        </a>
+    {% endif %}
+
+{% endblock %}

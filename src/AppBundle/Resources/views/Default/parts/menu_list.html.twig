@@ -1,0 +1,38 @@
+{% if is_granted('ROLE_OPERATORE') %}
+    <li>
+        <a href="{{ path('operatori_index') }}">
+            <i class="fa fa-tachometer" aria-hidden="true"></i> {{ 'nav.operatori.panello_controllo'|trans }}
+        </a>
+    </li>
+{% else %}
+
+
+    <li{% if 'dashboard' in app.request.pathInfo %} class="active" {% endif %}>
+        <a href="{{ path('user_dashboard') }}">
+            <i class="fa fa-tachometer" aria-hidden="true"></i> {{ 'nav.dashboard'|trans }}
+        </a></li>
+    <li{% if 'servizi' in app.request.pathInfo %} class="active" {% endif %}>
+        <a href="{{ path('servizi_list') }}">
+            <i class="fa fa-cubes" aria-hidden="true"></i> {{ 'nav.servizi'|trans }}
+        </a></li>
+    <li{% if 'pratiche' in app.request.pathInfo and 'allegati' not in app.request.pathInfo %} class="active" {% endif %}>
+        <a href="{{ path('pratiche') }}">
+            <i class="fa fa-files-o" aria-hidden="true"></i> {{ 'nav.pratiche'|trans }}
+        </a>
+    </li>
+    <li{% if 'profilo' in app.request.pathInfo %} class="active" {% endif %}>
+        <a href="{{ path('user_profile') }}">
+            <i class="fa fa-user" aria-hidden="true"></i> {{ 'nav.profilo'|trans }}
+        </a></li>
+    <li{% if 'allegati' in app.request.pathInfo %} class="active" {% endif %}>
+        <a href="{{ path('allegati_list_cpsuser') }}">
+            <i class="fa fa-user" aria-hidden="true"></i> {{ 'nav.allegati'|trans }}
+        </a>
+    </li>
+    {% if is_granted('ROLE_OPERATORE_ADMIN') %}
+        <li{% if 'operatori/list' in app.request.pathInfo %} class="active" {% endif %}>
+            <a href="{{ path('operatori_list_by_ente') }}">
+                <i class="fa fa-user" aria-hidden="true"></i> {{ 'nav.operatori.lista_operatori'|trans }}
+            </a></li>
+    {% endif %}
+{% endif %}
