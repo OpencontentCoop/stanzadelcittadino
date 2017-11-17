@@ -40,7 +40,7 @@ La scelta di questa licenza è dovuta a da due ragioni:
 * la tutela degli utenti ed in particolare degli enti pubblici, che possono più facilmente rispettare quanto previsto dall'Art. 68 comma 1-ter e dal Piano Triennale per l'informativa nella Pubblica Amministrazione.
 
 
-### Art. 68.  Analisi comparativa delle soluzioni 
+## Codice dell'Amministrazione Digitale - Art. 68.  Analisi comparativa delle soluzioni 
 
 In vigore dal 14 settembre 2016 
 
@@ -67,25 +67,4 @@ b)  livello di utilizzo di formati di dati e di interfacce di tipo aperto nonch�
 c)  garanzie del fornitore in materia di livelli di sicurezza, conformità alla normativa in materia di protezione dei dati personali, livelli di servizio tenuto conto della tipologia di software acquisito. 
 
 ### 1-ter.  Ove dalla valutazione comparativa di tipo tecnico ed economico, secondo i criteri di cui al comma 1-bis, risulti motivatamente l'impossibilità di accedere a soluzioni già disponibili all'interno della pubblica amministrazione, o a software liberi o a codici sorgente aperto, adeguati alle esigenze da soddisfare, è consentita l'acquisizione di programmi informatici di tipo proprietario mediante ricorso a licenza d'uso. 
-
-La valutazione di cui al presente comma è effettuata secondo le modalità e i criteri definiti dall'AgID.
-
-[2.  Le pubbliche amministrazioni nella predisposizione o nell'acquisizione dei programmi informatici, adottano soluzioni informatiche, quando possibile modulari, basate sui sistemi funzionali resi noti ai sensi dell'articolo 70, che assicurino l'interoperabilità e la cooperazione applicativa e consentano la rappresentazione dei dati e documenti in più formati, di cui almeno uno di tipo aperto, salvo che ricorrano motivate ed eccezionali esigenze.]
-
-[2-bis.  Le amministrazioni pubbliche comunicano tempestivamente a DigitPA l'adozione delle applicazioni informatiche e delle pratiche tecnologiche, e organizzative, adottate, fornendo ogni utile informazione ai fini della piena conoscibilità delle soluzioni adottate e dei risultati ottenuti, anche per favorire il riuso e la più ampia diffusione delle migliori pratiche.]
-
-3.  Agli effetti del presente Codice si intende per:
-
-a)  formato dei dati di tipo aperto, un formato di dati reso pubblico, documentato esaustivamente e neutro rispetto agli strumenti tecnologici necessari per la fruizione dei dati stessi; 
-
-b)  dati di tipo aperto, i dati che presentano le seguenti caratteristiche:
-
-1)  sono disponibili secondo i termini di una licenza che ne permetta l'utilizzo da parte di chiunque, anche per finalità commerciali, in formato disaggregato; 
-
-2)  sono accessibili attraverso le tecnologie dell'informazione e della comunicazione, ivi comprese le reti telematiche pubbliche e private, in formati aperti ai sensi della lettera a), sono adatti all'utilizzo automatico da parte di programmi per elaboratori e sono provvisti dei relativi metadati; 
-
-3)  sono resi disponibili gratuitamente attraverso le tecnologie dell'informazione e della comunicazione, ivi comprese le reti telematiche pubbliche e private, oppure sono resi disponibili ai costi marginali sostenuti per la loro riproduzione e divulgazione, salvo i casi previsti dall'articolo 7 del decreto legislativo 24 gennaio 2006, n. 36, e secondo le tariffe determinate con le modalità di cui al medesimo articolo. 
-
-[4.  DigitPA istruisce ed aggiorna, con periodicità almeno annuale, un repertorio dei formati aperti utilizzabili nelle pubbliche amministrazioni e delle modalità di trasferimento dei formati.]
-
 
