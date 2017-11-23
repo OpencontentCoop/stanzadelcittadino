@@ -65,7 +65,3 @@ c)  garanzie del fornitore in materia di livelli di sicurezza, conformità alla 
 
 #### 1-ter  Ove dalla valutazione comparativa di tipo tecnico ed economico, secondo i criteri di cui al comma 1-bis, risulti motivatamente l'impossibilità di accedere a soluzioni già disponibili all'interno della pubblica amministrazione, o a software liberi o a codici sorgente aperto, adeguati alle esigenze da soddisfare, è consentita l'acquisizione di programmi informatici di tipo proprietario mediante ricorso a licenza d'uso. 
 
-## Autori e contributori
- * Marco Albarelli [marcoalbarelli](https://github.com/marcoalbarelli)
- * Raffaele Luccisano [coppo](https://github.com/coppo)
- * Luca Realdi [lrealdi](https://github.com/lrealdi)
