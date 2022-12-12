@@ -1,3 +1,5 @@
+Questo progetto si trova in versione aggiornata a questo [indirizzo](https://gitlab.com/opencontent/stanza-del-cittadino/core)
+
 # OpenContent - Stanza Del Cittadino (```ocsdc```)
 
 ## Applicazione per la gestione delle istanze on-line dei cittadini
